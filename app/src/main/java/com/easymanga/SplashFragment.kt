@@ -20,12 +20,10 @@ class SplashFragment : BaseFragment() {
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     override fun onResume() {
         super.onResume()
-        handler.postDelayed({ navigate(R.id.home_dest) }, SPLASH_DURATION)
+        handler.postDelayed({
+            navController.navigate(R.id.next_action)
+        }, SPLASH_DURATION)
     }
 }
