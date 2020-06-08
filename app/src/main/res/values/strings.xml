@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EasyManga</string>
+
+    <!-- Screen label -->
+    <string name="splash">Splash</string>
+    <string name="home">Home</string>
+</resources>
