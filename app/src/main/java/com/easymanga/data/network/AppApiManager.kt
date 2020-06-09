@@ -1,10 +1,11 @@
 package com.easymanga.data.network
 
 import android.util.Log
-import com.easymanga.data.model.Channel
-import com.easymanga.data.model.ChannelData
+import com.easymanga.data.Channel
+import com.easymanga.data.ChannelData
 import com.easymanga.util.Constant
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 import java.io.IOException
 import javax.inject.Inject
@@ -40,5 +41,22 @@ class AppApiManager @Inject constructor(private val retrofitApi: ApiManager.Retr
             }
             return emptyList()
         }
+    }
+
+    override fun getChannels2(onResult: (isSuccess: Boolean, channels: List<Channel>?) -> Unit) {
+        retrofitApi.getChannelList().enqueue(object : Callback<ChannelData> {
+
+            override fun onFailure(call: Call<ChannelData>, t: Throwable) {
+                onResult(false, null)
+            }
+
+            override fun onResponse(call: Call<ChannelData>, response: Response<ChannelData>) {
+                if (response.isSuccessful) {
+                    onResult(true, response.body()?.data)
+                } else {
+                    onResult(false, null)
+                }
+            }
+        })
     }
 }

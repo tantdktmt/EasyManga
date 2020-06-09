@@ -1,14 +1,16 @@
 package com.easymanga.di.component
 
 import com.easymanga.EasyMangaApplication
-import com.easymanga.HomeFragment
+import com.easymanga.ui.episodelist.HomeFragment
 import com.easymanga.di.module.AppModule
 import com.easymanga.di.module.NetModule
+import com.easymanga.di.module.ViewModelModule
+import com.easymanga.ui.episodelist.EpisodeListViewModel
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [AppModule::class, NetModule::class])
+@Component(modules = [AppModule::class, NetModule::class, ViewModelModule::class])
 interface AppComponent {
 
     companion object Factory {
@@ -21,4 +23,6 @@ interface AppComponent {
     }
 
     fun inject(fragment: HomeFragment)
+
+    fun inject(viewModel: EpisodeListViewModel)
 }

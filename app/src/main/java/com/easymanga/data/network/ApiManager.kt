@@ -1,13 +1,15 @@
 package com.easymanga.data.network
 
-import com.easymanga.data.model.Channel
-import com.easymanga.data.model.ChannelData
+import com.easymanga.data.Channel
+import com.easymanga.data.ChannelData
 import retrofit2.Call
 import retrofit2.http.GET
 
 interface ApiManager {
 
     fun getChannels(): List<Channel>?
+
+    fun getChannels2(onResult: (isSuccess: Boolean, channels: List<Channel>?) -> Unit)
 
     interface RetrofitApi {
 

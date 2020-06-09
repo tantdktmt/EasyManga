@@ -1,4 +1,4 @@
-package com.easymanga.core
+package com.easymanga.ui.base
 
 import androidx.appcompat.app.AppCompatActivity
 

@@ -15,4 +15,10 @@ class AppModule(private var context: EasyMangaApplication) {
     fun provideApplicationContext(): Context {
         return context
     }
+
+    @Provides
+    @Singleton
+    fun providePerson(): Person {
+        return Person("Tran Duc Tan", 30)
+    }
 }

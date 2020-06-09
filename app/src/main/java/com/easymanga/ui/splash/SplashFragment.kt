@@ -1,10 +1,11 @@
-package com.easymanga
+package com.easymanga.ui.splash
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.easymanga.core.BaseFragment
+import com.easymanga.R
+import com.easymanga.ui.base.BaseFragment
 
 class SplashFragment : BaseFragment() {
 

@@ -1,4 +1,4 @@
-package com.easymanga.core
+package com.easymanga.ui.base
 
 import android.os.Bundle
 import android.os.Handler

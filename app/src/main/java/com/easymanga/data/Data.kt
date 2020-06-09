@@ -1,4 +1,4 @@
-package com.easymanga.data.model
+package com.easymanga.data
 
 import com.google.gson.annotations.Expose
 

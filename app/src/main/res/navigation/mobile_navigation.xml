@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splash_dest"
-        android:name="com.easymanga.SplashFragment"
+        android:name="com.easymanga.ui.splash.SplashFragment"
         android:label="@string/splash"
         tools:layout="@layout/fragment_splash">
 
@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/home_dest"
-        android:name="com.easymanga.HomeFragment"
+        android:name="com.easymanga.ui.episodelist.HomeFragment"
         android:label="@string/home"
         tools:layout="@layout/fragment_home" />
 </navigation>

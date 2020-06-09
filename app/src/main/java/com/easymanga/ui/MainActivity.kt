@@ -1,14 +1,14 @@
-package com.easymanga
+package com.easymanga.ui
 
 import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import com.easymanga.core.BaseActivity
+import com.easymanga.R
+import com.easymanga.ui.base.BaseActivity
 import com.easymanga.util.Constant
 
 class MainActivity : BaseActivity() {
