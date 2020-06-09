@@ -2,7 +2,7 @@ package com.easymanga.di.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.easymanga.di.ViewModelFactory
+import com.easymanga.ui.base.ViewModelFactory
 import com.easymanga.di.ViewModelKey
 import com.easymanga.ui.episodelist.EpisodeListViewModel
 import dagger.Binds

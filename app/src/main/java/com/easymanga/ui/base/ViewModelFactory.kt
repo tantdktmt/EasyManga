@@ -1,4 +1,4 @@
-package com.easymanga.di
+package com.easymanga.ui.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
