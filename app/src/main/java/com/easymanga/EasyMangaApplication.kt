@@ -1,9 +1,8 @@
 package com.easymanga
 
 import android.app.Application
+import com.easymanga.data.network.ApiEndPoint
 import com.easymanga.di.component.AppComponent
-import com.easymanga.di.component.DaggerAppComponent
-import com.easymanga.di.module.AppModule
 
 class EasyMangaApplication : Application() {
 
@@ -23,7 +22,7 @@ class EasyMangaApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        appComponent = DaggerAppComponent.builder().appModule(AppModule(this)).build()
+        appComponent = AppComponent.create(this, ApiEndPoint.BASE_URL)
     }
 
     fun getAppComponent(): AppComponent {

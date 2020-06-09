@@ -10,8 +10,8 @@ import javax.inject.Singleton
 @Module
 class AppModule(private var context: EasyMangaApplication) {
 
-    @Singleton
     @Provides
+    @Singleton
     fun provideApplicationContext(): Context {
         return context
     }
