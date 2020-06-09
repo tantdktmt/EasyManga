@@ -7,9 +7,7 @@ import retrofit2.http.GET
 
 interface ApiManager {
 
-    fun getChannels(): List<Channel>?
-
-    fun getChannels2(onResult: (isSuccess: Boolean, channels: List<Channel>?) -> Unit)
+    fun getChannels(onResult: (isSuccess: Boolean, channels: List<Channel>?) -> Unit)
 
     interface RetrofitApi {
 

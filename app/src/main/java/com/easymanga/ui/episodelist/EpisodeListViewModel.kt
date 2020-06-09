@@ -12,7 +12,7 @@ class EpisodeListViewModel @Inject constructor(private val apiManager: ApiManage
 
     fun fetchChannelList() {
         dataLoading.value = true
-        apiManager.getChannels2 { isSuccess, channels ->
+        apiManager.getChannels { isSuccess, channels ->
             dataLoading.value = false
             if (isSuccess) {
                 channelListLive.value = channels
