@@ -1,7 +1,9 @@
 package com.easymanga
 
 import android.app.Application
-import com.easymanga.data.network.ApiEndPoint
+import android.content.Context
+import androidx.multidex.MultiDex
+import com.easymanga.data.network.EndPoint
 import com.easymanga.di.component.AppComponent
 
 class EasyMangaApplication : Application() {
@@ -22,10 +24,15 @@ class EasyMangaApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        appComponent = AppComponent.create(this, ApiEndPoint.BASE_URL)
+        appComponent = AppComponent.create(this, EndPoint.BASE_URL)
     }
 
     fun getAppComponent(): AppComponent {
         return appComponent
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
     }
 }

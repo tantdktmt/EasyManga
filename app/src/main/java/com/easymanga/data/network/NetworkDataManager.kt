@@ -2,12 +2,16 @@ package com.easymanga.data.network
 
 import com.easymanga.data.Channel
 import com.easymanga.data.ChannelData
+import com.easymanga.data.Episode
+import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.GET
 
-interface ApiManager {
+interface NetworkDataManager {
 
     fun getChannels(onResult: (isSuccess: Boolean, channels: List<Channel>?) -> Unit)
+
+    fun getEpisodeList(): Single<List<Episode>>
 
     interface RetrofitApi {
 

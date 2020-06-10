@@ -1,7 +1,7 @@
 package com.easymanga.di.module
 
-import com.easymanga.data.network.ApiManager
-import com.easymanga.data.network.AppApiManager
+import com.easymanga.data.network.NetworkDataManager
+import com.easymanga.data.network.AppNetworkDataManager
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -32,13 +32,13 @@ class NetModule(val baseUrl: String) {
 
     @Provides
     @Singleton
-    fun provideRetrofitApi(retrofit: Retrofit): ApiManager.RetrofitApi {
-        return retrofit.create(ApiManager.RetrofitApi::class.java)
+    fun provideRetrofitApi(retrofit: Retrofit): NetworkDataManager.RetrofitApi {
+        return retrofit.create(NetworkDataManager.RetrofitApi::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideApiManager(retrofitApi: ApiManager.RetrofitApi): ApiManager {
-        return AppApiManager(retrofitApi)
+    fun provideApiManager(retrofitNetworkData: NetworkDataManager.RetrofitApi): NetworkDataManager {
+        return AppNetworkDataManager(retrofitNetworkData)
     }
 }

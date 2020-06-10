@@ -15,6 +15,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -69,4 +71,9 @@ dependencies {
 
     implementation "org.jetbrains.anko:anko:$anko_version"
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
+
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+
+    implementation 'androidx.multidex:multidex:2.0.1'
 }

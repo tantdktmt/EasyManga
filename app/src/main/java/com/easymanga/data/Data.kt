@@ -25,3 +25,5 @@ data class ChannelData(
     @Expose val data: List<Channel>,
     @Expose val total: Int
 )
+
+data class Episode(val name: String, val url: String)
