@@ -2,18 +2,21 @@ package com.easymanga.ui.mangalist
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.easymanga.EasyMangaApplication
 import com.easymanga.R
-import com.easymanga.data.Episode
+import com.easymanga.data.Manga
 import com.easymanga.databinding.FragmentMangaListBinding
 import com.easymanga.ui.base.BaseFragment
+import com.easymanga.util.Constant
 import javax.inject.Inject
 
 class MangaListFragment : BaseFragment() {
@@ -22,6 +25,10 @@ class MangaListFragment : BaseFragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var viewDataBinding: FragmentMangaListBinding
+
+    private val mangas = ArrayList<Manga>()
+    private lateinit var adapter: MangaListAdapter
+    private lateinit var rvManga: RecyclerView
 
     override fun onAttach(context: Context) {
         EasyMangaApplication.getInstance().getAppComponent().inject(this)
@@ -36,7 +43,9 @@ class MangaListFragment : BaseFragment() {
         viewDataBinding = FragmentMangaListBinding.inflate(inflater, container, false)
             .apply {
                 viewmodel =
-                    ViewModelProvider(this@MangaListFragment, viewModelFactory).get(MangaListViewModel::class.java)
+                    ViewModelProvider(this@MangaListFragment, viewModelFactory).get(
+                        MangaListViewModel::class.java
+                    )
                 lifecycleOwner = viewLifecycleOwner
             }
         return viewDataBinding.root
@@ -44,32 +53,33 @@ class MangaListFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        adapter = MangaListAdapter(mangas)
+        rvManga = view.findViewById(R.id.rv_manga)
+        rvManga.setHasFixedSize(true)
+        rvManga.layoutManager = GridLayoutManager(context, 2)
+        rvManga.itemAnimator = DefaultItemAnimator()
+        rvManga.adapter = adapter
         setupObservers()
     }
 
     private fun setupObservers() {
-//        viewDataBinding.viewmodel?.channelListLive?.observe(viewLifecycleOwner, Observer {
-//            updateUi(it)
-//        })
-        viewDataBinding.viewmodel?.episodeListLive?.observe(viewLifecycleOwner, Observer {
-            updateUi(it)
+        viewDataBinding.viewmodel?.mangaListLive?.observe(viewLifecycleOwner, Observer {
+            if (Constant.IS_DEBUG_MODE) {
+                Log.d(Constant.LOG_TAG, "Manga list: $it")
+            }
+            mangas.addAll(it)
+            // TESTING
+            val manga = it[0]
+            for(i in 0..9) {
+                mangas.add(manga)
+            }
+            // TESTING
+            adapter.notifyDataSetChanged()
         })
-    }
-
-//    private fun updateUi(channels: List<Episode>?) {
-//        TODO("Not yet implemented")
-//    }
-
-    private fun updateUi(channels: List<Episode>?) {
-        var msg = "Episode size: ${channels?.size ?: -2}"
-        view?.findViewById<TextView>(R.id.text)?.text = msg
     }
 
     override fun onResume() {
         super.onResume()
-        view?.findViewById<Button>(R.id.navigate_destination_button)?.setOnClickListener {
-//            viewDataBinding.viewmodel?.fetchChannelList()
-            viewDataBinding.viewmodel?.fetchEpisodeList()
-        }
+        viewDataBinding.viewmodel?.fetchMangaList()
     }
 }

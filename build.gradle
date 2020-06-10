@@ -30,6 +30,10 @@ ext {
     anko_version = '0.10.8'
     rxjava_version = '2.0.8'
     rxandroid_version = '2.0.1'
+    multidex_version = '2.0.1'
+    recyclerview_version = '1.1.0'
+    cardview_version = '1.0.0'
+    glide_version = '4.11.0'
 }
 
 allprojects {

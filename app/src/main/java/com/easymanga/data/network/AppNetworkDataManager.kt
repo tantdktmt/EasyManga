@@ -3,6 +3,7 @@ package com.easymanga.data.network
 import com.easymanga.data.Channel
 import com.easymanga.data.ChannelData
 import com.easymanga.data.Episode
+import com.easymanga.data.Manga
 import io.reactivex.Single
 import org.jsoup.Jsoup
 import retrofit2.Call
@@ -41,6 +42,21 @@ class AppNetworkDataManager @Inject constructor(private val retrofitNetworkData:
                 val doc = Jsoup.connect(EndPoint.MANGA_LIST_URL).get()
                 val result = doc.select("table tr td a").map {
                     Episode(it.text(), it.attr("href"))
+                }
+                it.onSuccess(result)
+            } catch (e: Exception) {
+                it.onError(e)
+            }
+        }
+    }
+
+    override fun getMangaList(): Single<List<Manga>> {
+        return Single.create {
+            try {
+                val doc = Jsoup.connect(EndPoint.MANGA_LIST_URL).get()
+                val summary = doc.select(".messageText:first-of-type").first().ownText()
+                val result = doc.select(".LbImage:first-of-type").map {
+                    Manga("Chie cô bé hạt tiêu", it.attr("src"), summary)
                 }
                 it.onSuccess(result)
             } catch (e: Exception) {
