@@ -3,5 +3,5 @@
 
     <!-- Screen label -->
     <string name="splash">Splash</string>
-    <string name="home">Home</string>
+    <string name="manga_list">Manga List</string>
 </resources>

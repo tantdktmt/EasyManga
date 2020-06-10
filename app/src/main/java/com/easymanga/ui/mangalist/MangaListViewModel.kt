@@ -1,4 +1,4 @@
-package com.easymanga.ui.episodelist
+package com.easymanga.ui.mangalist
 
 import android.util.Log
 import android.widget.TextView
@@ -13,7 +13,7 @@ import com.easymanga.util.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-class EpisodeListViewModel @Inject constructor(
+class MangaListViewModel @Inject constructor(
     networkDataManager: NetworkDataManager,
     compositeDisposable: CompositeDisposable,
     schedulerProvider: SchedulerProvider

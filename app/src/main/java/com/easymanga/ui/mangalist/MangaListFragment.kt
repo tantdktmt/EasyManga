@@ -1,4 +1,4 @@
-package com.easymanga.ui.episodelist
+package com.easymanga.ui.mangalist
 
 import android.content.Context
 import android.os.Bundle
@@ -11,18 +11,17 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.easymanga.EasyMangaApplication
 import com.easymanga.R
-import com.easymanga.data.Channel
 import com.easymanga.data.Episode
-import com.easymanga.databinding.FragmentHomeBinding
+import com.easymanga.databinding.FragmentMangaListBinding
 import com.easymanga.ui.base.BaseFragment
 import javax.inject.Inject
 
-class HomeFragment : BaseFragment() {
+class MangaListFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var viewDataBinding: FragmentHomeBinding
+    private lateinit var viewDataBinding: FragmentMangaListBinding
 
     override fun onAttach(context: Context) {
         EasyMangaApplication.getInstance().getAppComponent().inject(this)
@@ -34,10 +33,10 @@ class HomeFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewDataBinding = FragmentHomeBinding.inflate(inflater, container, false)
+        viewDataBinding = FragmentMangaListBinding.inflate(inflater, container, false)
             .apply {
                 viewmodel =
-                    ViewModelProvider(this@HomeFragment, viewModelFactory).get(EpisodeListViewModel::class.java)
+                    ViewModelProvider(this@MangaListFragment, viewModelFactory).get(MangaListViewModel::class.java)
                 lifecycleOwner = viewLifecycleOwner
             }
         return viewDataBinding.root

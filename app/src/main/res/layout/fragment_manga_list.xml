@@ -7,19 +7,19 @@
 
         <variable
             name="viewmodel"
-            type="com.easymanga.ui.episodelist.EpisodeListViewModel" />
+            type="com.easymanga.ui.mangalist.MangaListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.episodelist.HomeFragment">
+        tools:context=".ui.mangalist.MangaListFragment">
 
         <TextView
             android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/home"
+            android:text="@string/manga_list"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
