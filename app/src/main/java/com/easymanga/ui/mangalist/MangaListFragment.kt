@@ -10,13 +10,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.easymanga.EasyMangaApplication
-import com.easymanga.R
 import com.easymanga.data.Manga
 import com.easymanga.databinding.FragmentMangaListBinding
 import com.easymanga.ui.base.BaseFragment
 import com.easymanga.util.Constant
+import kotlinx.android.synthetic.main.fragment_manga_list.*
 import javax.inject.Inject
 
 class MangaListFragment : BaseFragment() {
@@ -28,7 +27,6 @@ class MangaListFragment : BaseFragment() {
 
     private val mangas = ArrayList<Manga>()
     private lateinit var adapter: MangaListAdapter
-    private lateinit var rvManga: RecyclerView
 
     override fun onAttach(context: Context) {
         EasyMangaApplication.getInstance().getAppComponent().inject(this)
@@ -54,11 +52,9 @@ class MangaListFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = MangaListAdapter(mangas)
-        rvManga = view.findViewById(R.id.rv_manga)
-        rvManga.setHasFixedSize(true)
-        rvManga.layoutManager = GridLayoutManager(context, 2)
-        rvManga.itemAnimator = DefaultItemAnimator()
-        rvManga.adapter = adapter
+        rv_manga.layoutManager = GridLayoutManager(context, 2)
+        rv_manga.itemAnimator = DefaultItemAnimator()
+        rv_manga.adapter = adapter
         setupObservers()
     }
 

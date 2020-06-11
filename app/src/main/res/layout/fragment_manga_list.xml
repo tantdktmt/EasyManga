@@ -4,12 +4,14 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewmodel"
             type="com.easymanga.ui.mangalist.MangaListViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/manga_list_padding"
@@ -19,6 +21,21 @@
             android:id="@+id/rv_manga"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="none" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:scrollbars="none"
+            android:visibility="@{safeUnbox(viewmodel.dataLoading) ? View.GONE : View.VISIBLE}" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="@{safeUnbox(viewmodel.dataLoading) ? View.VISIBLE : View.GONE}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="No repo to display"
+            android:textSize="18sp"
+            android:visibility="@{safeUnbox(viewmodel.empty) ? View.VISIBLE : View.GONE}" />
+    </RelativeLayout>
 </layout>
