@@ -1,9 +1,6 @@
 package com.easymanga.data.network
 
-import com.easymanga.data.Channel
-import com.easymanga.data.ChannelData
-import com.easymanga.data.Episode
-import com.easymanga.data.Manga
+import com.easymanga.data.*
 import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.GET
@@ -15,6 +12,8 @@ interface NetworkDataManager {
     fun getEpisodeList(): Single<List<Episode>>
 
     fun getMangaList(): Single<List<Manga>>
+
+    fun getPageList(episodeUrl: String): Single<List<Page>>
 
     interface RetrofitApi {
 

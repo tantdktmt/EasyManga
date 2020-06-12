@@ -4,8 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.ViewDataBinding
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.easymanga.BR
+import com.easymanga.R
 import com.easymanga.data.Episode
 import com.easymanga.databinding.EpisodeItemLayoutBinding
 import org.jetbrains.anko.sdk27.coroutines.onClick
@@ -20,7 +22,7 @@ class EpisodeListAdapter(private val episodes: List<Episode>) :
             dataBinding.setVariable(BR.itemData, episode)
             dataBinding.executePendingBindings()
             itemView.onClick {
-                Toast.makeText(itemView.context, "Click ${episode.url}", Toast.LENGTH_SHORT).show()
+                itemView.findNavController().navigate(R.id.episode_detail_dest)
             }
         }
     }

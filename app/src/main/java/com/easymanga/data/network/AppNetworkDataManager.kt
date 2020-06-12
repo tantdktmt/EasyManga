@@ -1,9 +1,6 @@
 package com.easymanga.data.network
 
-import com.easymanga.data.Channel
-import com.easymanga.data.ChannelData
-import com.easymanga.data.Episode
-import com.easymanga.data.Manga
+import com.easymanga.data.*
 import io.reactivex.Single
 import org.jsoup.Jsoup
 import retrofit2.Call
@@ -50,8 +47,8 @@ class AppNetworkDataManager @Inject constructor(private val retrofitNetworkData:
         }
     }
 
-    private fun getCoverUrl(url: String?): String {
-        val doc = Jsoup.connect(url).get()
+    private fun getCoverUrl(episodeUrl: String?): String {
+        val doc = Jsoup.connect(episodeUrl).get()
         return doc.select(".bbCodeImage").first().attr("src")
     }
 
@@ -62,6 +59,20 @@ class AppNetworkDataManager @Inject constructor(private val retrofitNetworkData:
                 val summary = doc.select(".messageText:first-of-type").first().ownText()
                 val result = doc.select(".LbImage:first-of-type").map {
                     Manga("Chie cô bé hạt tiêu", it.attr("src"), summary)
+                }
+                it.onSuccess(result)
+            } catch (e: Exception) {
+                it.onError(e)
+            }
+        }
+    }
+
+    override fun getPageList(episodeUrl: String): Single<List<Page>> {
+        return Single.create {
+            try {
+                val doc = Jsoup.connect(episodeUrl).get()
+                val result = doc.select(".bbCodeImage").map {
+                    Page(it.attr("src"))
                 }
                 it.onSuccess(result)
             } catch (e: Exception) {

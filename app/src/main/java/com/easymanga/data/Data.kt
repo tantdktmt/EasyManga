@@ -29,3 +29,5 @@ data class ChannelData(
 data class Manga(val name: String, val imageUrl: String, val summary: String)
 
 data class Episode(val name: String, val url: String, val coverUrl: String)
+
+data class Page(val imageUrl: String)

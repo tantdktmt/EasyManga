@@ -33,4 +33,14 @@
         android:name="com.easymanga.ui.episodelist.EpisodeListFragment"
         android:label="@string/episode_list"
         tools:layout="@layout/fragment_episode_list" />
+
+    <fragment
+        android:id="@+id/episode_detail_dest"
+        android:name="com.easymanga.ui.episodedetail.EpisodeDetailFragment"
+        android:label="@string/episode_detail"
+        tools:layout="@layout/fragment_episode_detail">
+
+        <argument android:name="episodeUrl"
+            android:defaultValue="defaul value"/>
+    </fragment>
 </navigation>
