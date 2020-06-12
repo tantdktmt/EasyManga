@@ -1,29 +1,33 @@
 package com.easymanga.ui.mangalist
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.easymanga.R
+import com.easymanga.BR
 import com.easymanga.data.Manga
+import com.easymanga.databinding.MangaItemLayoutBinding
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class MangaListAdapter(private val mangas: List<Manga>) :
     RecyclerView.Adapter<MangaListAdapter.ViewHolder>() {
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(private val dataBinding: ViewDataBinding) :
+        RecyclerView.ViewHolder(dataBinding.root) {
 
-        val tvName: TextView = itemView.findViewById(R.id.tv_name)
-        val ivPhoto: ImageView = itemView.findViewById(R.id.iv_photo)
+        fun bind(manga: Manga) {
+            dataBinding.setVariable(BR.itemData, manga)
+            dataBinding.executePendingBindings()
+            itemView.onClick {
+                Toast.makeText(itemView.context, "Click ${manga.imageUrl}", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.manga_item_layout, parent, false)
-        return ViewHolder(itemView)
+        val dataBinding = MangaItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(dataBinding)
     }
 
     override fun getItemCount(): Int {
@@ -31,7 +35,6 @@ class MangaListAdapter(private val mangas: List<Manga>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tvName.text = mangas[position].name
-        Glide.with(holder.itemView).load(mangas[position].imageUrl).into(holder.ivPhoto)
+        holder.bind(mangas[position])
     }
 }

@@ -26,7 +26,6 @@ class MangaListFragment : BaseFragment() {
     private lateinit var viewDataBinding: FragmentMangaListBinding
 
     private val mangas = ArrayList<Manga>()
-    private lateinit var adapter: MangaListAdapter
 
     override fun onAttach(context: Context) {
         EasyMangaApplication.getInstance().getAppComponent().inject(this)
@@ -51,11 +50,16 @@ class MangaListFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = MangaListAdapter(mangas)
-        rv_manga.layoutManager = GridLayoutManager(context, 2)
-        rv_manga.itemAnimator = DefaultItemAnimator()
-        rv_manga.adapter = adapter
+        setUpRecyclerView()
         setupObservers()
+    }
+
+    private fun setUpRecyclerView() {
+        rv_manga.apply {
+            layoutManager = GridLayoutManager(context, 2)
+            itemAnimator = DefaultItemAnimator()
+            this.adapter = MangaListAdapter(mangas)
+        }
     }
 
     private fun setupObservers() {
@@ -70,7 +74,7 @@ class MangaListFragment : BaseFragment() {
                 mangas.add(manga)
             }
             // TESTING
-            adapter.notifyDataSetChanged()
+            rv_manga.adapter?.notifyDataSetChanged()
         })
     }
 
