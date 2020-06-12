@@ -1,4 +1,4 @@
-package com.easymanga.ui.mangalist
+package com.easymanga.ui.episodelist
 
 import androidx.lifecycle.MutableLiveData
 import com.easymanga.data.Channel
@@ -10,25 +10,13 @@ import com.easymanga.util.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-class MangaListViewModel @Inject constructor(
+class EpisodeListViewModel @Inject constructor(
     networkDataManager: NetworkDataManager,
     compositeDisposable: CompositeDisposable,
     schedulerProvider: SchedulerProvider
 ) : BaseViewModel(networkDataManager, compositeDisposable, schedulerProvider) {
 
-    val channelListLive = MutableLiveData<List<Channel>>()
     val episodeListLive = MutableLiveData<List<Episode>>()
-    val mangaListLive = MutableLiveData<List<Manga>>()
-
-    fun fetchChannelList() {
-        dataLoading.value = true
-        networkDataManager.getChannels { isSuccess, channels ->
-            dataLoading.value = false
-            if (isSuccess) {
-                channelListLive.value = channels
-            }
-        }
-    }
 
     fun fetchEpisodeList() {
         dataLoading.value = true
@@ -38,18 +26,6 @@ class MangaListViewModel @Inject constructor(
                 episodeListLive.value = it
                 dataLoading.value = false
             }, {
-                dataLoading.value = false
-            }))
-    }
-
-    fun fetchMangaList() {
-        dataLoading.value = true
-        compositeDisposable.add(networkDataManager.getMangaList().subscribeOn(schedulerProvider.io())
-            .observeOn(schedulerProvider.ui())
-            .subscribe({
-                dataLoading.value = false
-                mangaListLive.value = it
-            },{
                 dataLoading.value = false
             }))
     }

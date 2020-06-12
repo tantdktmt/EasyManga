@@ -27,4 +27,10 @@
         android:name="com.easymanga.ui.mangalist.MangaListFragment"
         android:label="@string/manga_list"
         tools:layout="@layout/fragment_manga_list" />
+
+    <fragment
+        android:id="@+id/episode_list_dest"
+        android:name="com.easymanga.ui.episodelist.EpisodeListFragment"
+        android:label="@string/episode_list"
+        tools:layout="@layout/fragment_episode_list" />
 </navigation>

@@ -41,13 +41,18 @@ class AppNetworkDataManager @Inject constructor(private val retrofitNetworkData:
             try {
                 val doc = Jsoup.connect(EndPoint.MANGA_LIST_URL).get()
                 val result = doc.select("table tr td a").map {
-                    Episode(it.text(), it.attr("href"))
+                    Episode(it.text(), it.attr("href"), getCoverUrl(it.attr("href")))
                 }
                 it.onSuccess(result)
             } catch (e: Exception) {
                 it.onError(e)
             }
         }
+    }
+
+    private fun getCoverUrl(url: String?): String {
+        val doc = Jsoup.connect(url).get()
+        return doc.select(".bbCodeImage").first().attr("src")
     }
 
     override fun getMangaList(): Single<List<Manga>> {
