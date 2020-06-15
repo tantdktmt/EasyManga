@@ -14,6 +14,7 @@ import com.easymanga.EasyMangaApplication
 import com.easymanga.data.Episode
 import com.easymanga.databinding.FragmentEpisodeListBinding
 import com.easymanga.ui.base.BaseFragment
+import com.easymanga.util.CommonUtil
 import com.easymanga.util.Constant
 import kotlinx.android.synthetic.main.fragment_episode_list.*
 import javax.inject.Inject
@@ -75,9 +76,7 @@ class EpisodeListFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        if (viewDataBinding.viewmodel?.episodeListLive?.value == null
-            || viewDataBinding.viewmodel?.episodeListLive?.value!!.isEmpty()
-        ) {
+        if (CommonUtil.isListEmpty(viewDataBinding.viewmodel?.episodeListLive?.value)) {
             viewDataBinding.viewmodel?.fetchEpisodeList()
         }
     }

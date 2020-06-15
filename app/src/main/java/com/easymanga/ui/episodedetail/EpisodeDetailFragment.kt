@@ -15,6 +15,7 @@ import com.easymanga.EasyMangaApplication
 import com.easymanga.data.Page
 import com.easymanga.databinding.FragmentEpisodeDetailBinding
 import com.easymanga.ui.base.BaseFragment
+import com.easymanga.util.CommonUtil
 import com.easymanga.util.Constant
 import kotlinx.android.synthetic.main.fragment_episode_detail.*
 import javax.inject.Inject
@@ -79,7 +80,9 @@ class EpisodeDetailFragment : BaseFragment() {
     override fun onResume() {
         super.onResume()
         val episodeUrl = args.episodeUrl
-        if (episodeUrl != null) {
+        if (episodeUrl != null
+            && CommonUtil.isListEmpty(viewDataBinding.viewmodel?.pageListLive?.value)
+        ) {
             viewDataBinding.viewmodel?.fetchPageList(episodeUrl)
         }
     }

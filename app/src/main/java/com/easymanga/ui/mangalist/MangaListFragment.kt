@@ -14,6 +14,7 @@ import com.easymanga.EasyMangaApplication
 import com.easymanga.data.Manga
 import com.easymanga.databinding.FragmentMangaListBinding
 import com.easymanga.ui.base.BaseFragment
+import com.easymanga.util.CommonUtil
 import com.easymanga.util.Constant
 import kotlinx.android.synthetic.main.fragment_manga_list.*
 import javax.inject.Inject
@@ -67,6 +68,7 @@ class MangaListFragment : BaseFragment() {
             if (Constant.IS_DEBUG_MODE) {
                 Log.d(Constant.LOG_TAG, "Manga list: $it")
             }
+            mangas.clear()
             mangas.addAll(it)
             // TESTING
             val manga = it[0]
@@ -80,6 +82,8 @@ class MangaListFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        viewDataBinding.viewmodel?.fetchMangaList()
+        if (CommonUtil.isListEmpty(viewDataBinding.viewmodel?.mangaListLive?.value)) {
+            viewDataBinding.viewmodel?.fetchMangaList()
+        }
     }
 }
