@@ -22,7 +22,7 @@ class MangaListAdapter(private val mangas: List<Manga>) :
             dataBinding.setVariable(BR.itemData, manga)
             dataBinding.executePendingBindings()
             itemView.onClick {
-                itemView.findNavController().navigate(R.id.episode_list_dest)
+                itemView.findNavController().navigate(R.id.go_to_episode_list_action)
             }
         }
     }
