@@ -67,6 +67,7 @@ class EpisodeListFragment : BaseFragment() {
             if (Constant.IS_DEBUG_MODE) {
                 Log.d(Constant.LOG_TAG, "Episode list: $it")
             }
+            episodes.clear()
             episodes.addAll(it)
             rv_episode.adapter?.notifyDataSetChanged()
         })
@@ -74,6 +75,10 @@ class EpisodeListFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        viewDataBinding.viewmodel?.fetchEpisodeList()
+        if (viewDataBinding.viewmodel?.episodeListLive?.value == null
+            || viewDataBinding.viewmodel?.episodeListLive?.value!!.isEmpty()
+        ) {
+            viewDataBinding.viewmodel?.fetchEpisodeList()
+        }
     }
 }

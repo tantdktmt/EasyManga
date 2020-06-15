@@ -70,6 +70,7 @@ class EpisodeDetailFragment : BaseFragment() {
             if (Constant.IS_DEBUG_MODE) {
                 Log.d(Constant.LOG_TAG, "Page list: $it")
             }
+            pages.clear()
             pages.addAll(it)
             rv_page.adapter?.notifyDataSetChanged()
         })
