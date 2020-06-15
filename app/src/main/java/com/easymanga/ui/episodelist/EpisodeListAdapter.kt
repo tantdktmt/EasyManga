@@ -2,12 +2,10 @@ package com.easymanga.ui.episodelist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.ViewDataBinding
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.easymanga.BR
-import com.easymanga.R
 import com.easymanga.data.Episode
 import com.easymanga.databinding.EpisodeItemLayoutBinding
 import org.jetbrains.anko.sdk27.coroutines.onClick
@@ -22,13 +20,15 @@ class EpisodeListAdapter(private val episodes: List<Episode>) :
             dataBinding.setVariable(BR.itemData, episode)
             dataBinding.executePendingBindings()
             itemView.onClick {
-                itemView.findNavController().navigate(R.id.episode_detail_dest)
+                val action = EpisodeListFragmentDirections.goToEpisodeDetailAction(episode.url)
+                itemView.findNavController().navigate(action)
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val dataBinding = EpisodeItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val dataBinding =
+            EpisodeItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(dataBinding)
     }
 

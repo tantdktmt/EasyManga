@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.easymanga.EasyMangaApplication
 import com.easymanga.data.Page
@@ -28,6 +27,8 @@ class EpisodeDetailFragment : BaseFragment() {
     private lateinit var viewDataBinding: FragmentEpisodeDetailBinding
 
     private val pages = ArrayList<Page>()
+
+    private val args: EpisodeDetailFragmentArgs by navArgs()
 
     override fun onAttach(context: Context) {
         EasyMangaApplication.getInstance().getAppComponent().inject(this)
@@ -76,12 +77,9 @@ class EpisodeDetailFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        // TESTING
-        val FAKE_URL = "http://webtrainghiem.com/threads/truyen-tranh-chie-co-be-hat-tieu-jarinko-chie-tap-1.7239/"
-        // TESTING
-        val args: EpisodeDetailFragmentArgs by navArgs()
-        // TODO: update to use safeArgs
         val episodeUrl = args.episodeUrl
-        viewDataBinding.viewmodel?.fetchPageList(FAKE_URL)
+        if (episodeUrl != null) {
+            viewDataBinding.viewmodel?.fetchPageList(episodeUrl)
+        }
     }
 }

@@ -32,7 +32,16 @@
         android:id="@+id/episode_list_dest"
         android:name="com.easymanga.ui.episodelist.EpisodeListFragment"
         android:label="@string/episode_list"
-        tools:layout="@layout/fragment_episode_list" />
+        tools:layout="@layout/fragment_episode_list">
+
+        <action
+            android:id="@+id/go_to_episode_detail_action"
+            app:destination="@id/episode_detail_dest"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/episode_detail_dest"
@@ -40,7 +49,10 @@
         android:label="@string/episode_detail"
         tools:layout="@layout/fragment_episode_detail">
 
-        <argument android:name="episodeUrl"
-            android:defaultValue="defaul value"/>
+        <argument
+            android:name="episodeUrl"
+            android:defaultValue="@null"
+            app:nullable="true"
+            app:argType="string" />
     </fragment>
 </navigation>
