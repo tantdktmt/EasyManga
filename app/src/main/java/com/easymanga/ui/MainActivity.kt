@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import com.easymanga.BuildConfig
 import com.easymanga.R
 import com.easymanga.ui.base.BaseActivity
 import com.easymanga.util.Constant
@@ -35,7 +36,7 @@ class MainActivity : BaseActivity() {
             } catch (e: Resources.NotFoundException) {
                 Integer.toString(destination.id)
             }
-            if (Constant.IS_DEBUG_MODE) {
+            if (BuildConfig.DEBUG) {
                 Log.d(Constant.LOG_TAG, "Navigated to $dest")
             }
         }

@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.easymanga.BuildConfig
 import com.easymanga.EasyMangaApplication
 import com.easymanga.data.Page
 import com.easymanga.databinding.FragmentEpisodeDetailBinding
@@ -68,7 +69,7 @@ class EpisodeDetailFragment : BaseFragment() {
 
     private fun setupObservers() {
         viewDataBinding.viewmodel?.pageListLive?.observe(viewLifecycleOwner, Observer {
-            if (Constant.IS_DEBUG_MODE) {
+            if (BuildConfig.DEBUG) {
                 Log.d(Constant.LOG_TAG, "Page list: $it")
             }
             pages.clear()

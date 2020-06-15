@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
+import com.easymanga.BuildConfig
 import com.easymanga.EasyMangaApplication
 import com.easymanga.data.Episode
 import com.easymanga.databinding.FragmentEpisodeListBinding
@@ -65,7 +66,7 @@ class EpisodeListFragment : BaseFragment() {
 
     private fun setupObservers() {
         viewDataBinding.viewmodel?.episodeListLive?.observe(viewLifecycleOwner, Observer {
-            if (Constant.IS_DEBUG_MODE) {
+            if (BuildConfig.DEBUG) {
                 Log.d(Constant.LOG_TAG, "Episode list: $it")
             }
             episodes.clear()
