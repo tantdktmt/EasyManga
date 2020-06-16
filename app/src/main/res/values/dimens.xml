@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="manga_list_padding">10dp</dimen>
+    <dimen name="manga_detail_overview_padding">15dp</dimen>
+    <dimen name="manga_detail_overview_photo_padding">30dp</dimen>
     <dimen name="manga_list_item_title_gap">6dp</dimen>
 </resources>
