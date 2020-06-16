@@ -60,7 +60,7 @@ class EpisodeDetailFragment : BaseFragment() {
     }
 
     private fun setupObservers() {
-        viewDataBinding.viewmodel?.pageListLive?.observe(viewLifecycleOwner, Observer {
+        viewDataBinding.viewmodel?.pageList?.observe(viewLifecycleOwner, Observer {
             if (BuildConfig.DEBUG) {
                 Log.d(Constant.LOG_TAG, "Page list: $it")
             }
@@ -74,7 +74,7 @@ class EpisodeDetailFragment : BaseFragment() {
         super.onResume()
         val episodeUrl = args.episodeUrl
         if (episodeUrl != null
-            && CommonUtil.isListEmpty(viewDataBinding.viewmodel?.pageListLive?.value)
+            && CommonUtil.isListEmpty(viewDataBinding.viewmodel?.pageList?.value)
         ) {
             viewDataBinding.viewmodel?.fetchPageList(episodeUrl)
         }

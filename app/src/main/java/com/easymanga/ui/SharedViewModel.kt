@@ -17,10 +17,10 @@ class SharedViewModel @Inject constructor(
     schedulerProvider: SchedulerProvider
 ) : BaseViewModel(networkDataManager, compositeDisposable, schedulerProvider) {
 
-    val channelListLive = MutableLiveData<List<Channel>>()
-    val episodeListLive = MutableLiveData<List<Episode>>()
-    val mangaListLive = MutableLiveData<List<Manga>>()
-    val pageListLive = MutableLiveData<List<Page>>()
+    val channelList = MutableLiveData<List<Channel>>()
+    val episodeList = MutableLiveData<List<Episode>>()
+    val mangaList = MutableLiveData<List<Manga>>()
+    val pageList = MutableLiveData<List<Page>>()
     val mangaDetail = MutableLiveData<Manga>()
 
     fun fetchChannelList() {
@@ -28,7 +28,7 @@ class SharedViewModel @Inject constructor(
         networkDataManager.getChannels { isSuccess, channels ->
             dataLoading.value = false
             if (isSuccess) {
-                channelListLive.value = channels
+                channelList.value = channels
             }
         }
     }
@@ -38,7 +38,7 @@ class SharedViewModel @Inject constructor(
         compositeDisposable.add(networkDataManager.getEpisodeList().subscribeOn(schedulerProvider.io())
             .observeOn(schedulerProvider.ui())
             .subscribe({
-                episodeListLive.value = it
+                episodeList.value = it
                 dataLoading.value = false
             }, {
                 dataLoading.value = false
@@ -51,7 +51,7 @@ class SharedViewModel @Inject constructor(
             .observeOn(schedulerProvider.ui())
             .subscribe({
                 dataLoading.value = false
-                mangaListLive.value = it
+                mangaList.value = it
             },{
                 dataLoading.value = false
             }))
@@ -63,7 +63,7 @@ class SharedViewModel @Inject constructor(
             networkDataManager.getPageList(episodeUrl).subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.ui())
                 .subscribe({
-                    pageListLive.value = it
+                    pageList.value = it
                     dataLoading.value = false
                 }, {
                     dataLoading.value = false

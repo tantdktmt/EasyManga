@@ -57,7 +57,7 @@ class MangaListFragment : BaseFragment() {
     }
 
     private fun setupObservers() {
-        viewDataBinding.viewmodel?.mangaListLive?.observe(viewLifecycleOwner, Observer {
+        viewDataBinding.viewmodel?.mangaList?.observe(viewLifecycleOwner, Observer {
             if (BuildConfig.DEBUG) {
                 Log.d(Constant.LOG_TAG, "Manga list: $it")
             }
@@ -75,7 +75,7 @@ class MangaListFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        if (CommonUtil.isListEmpty(viewDataBinding.viewmodel?.mangaListLive?.value)) {
+        if (CommonUtil.isListEmpty(viewDataBinding.viewmodel?.mangaList?.value)) {
             viewDataBinding.viewmodel?.fetchMangaList()
         }
     }

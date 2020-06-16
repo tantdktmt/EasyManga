@@ -58,7 +58,7 @@ class EpisodeListFragment : BaseFragment() {
     }
 
     private fun setupObservers() {
-        viewDataBinding.viewmodel?.episodeListLive?.observe(viewLifecycleOwner, Observer {
+        viewDataBinding.viewmodel?.episodeList?.observe(viewLifecycleOwner, Observer {
             if (BuildConfig.DEBUG) {
                 Log.d(Constant.LOG_TAG, "Episode list: $it")
             }
@@ -70,7 +70,7 @@ class EpisodeListFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        if (CommonUtil.isListEmpty(viewDataBinding.viewmodel?.episodeListLive?.value)) {
+        if (CommonUtil.isListEmpty(viewDataBinding.viewmodel?.episodeList?.value)) {
             viewDataBinding.viewmodel?.fetchEpisodeList()
         }
     }
