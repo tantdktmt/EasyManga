@@ -4,12 +4,11 @@ import com.easymanga.EasyMangaApplication
 import com.easymanga.di.module.AppModule
 import com.easymanga.di.module.NetModule
 import com.easymanga.di.module.ViewModelModule
+import com.easymanga.ui.SharedViewModel
+import com.easymanga.ui.base.BaseFragment
 import com.easymanga.ui.episodedetail.EpisodeDetailFragment
-import com.easymanga.ui.episodedetail.EpisodeDetailViewModel
 import com.easymanga.ui.episodelist.page.EpisodeListFragment
-import com.easymanga.ui.episodelist.page.EpisodeListViewModel
 import com.easymanga.ui.mangalist.MangaListFragment
-import com.easymanga.ui.mangalist.MangaListViewModel
 import dagger.Component
 import javax.inject.Singleton
 
@@ -26,15 +25,13 @@ interface AppComponent {
         }
     }
 
+    fun inject(fragment: BaseFragment)
+
     fun inject(fragment: MangaListFragment)
 
     fun inject(fragment: EpisodeListFragment)
 
     fun inject(fragment: EpisodeDetailFragment)
 
-    fun inject(viewModel: MangaListViewModel)
-
-    fun inject(viewModel: EpisodeListViewModel)
-
-    fun inject(viewModel: EpisodeDetailViewModel)
+    fun inject(viewModel: SharedViewModel)
 }

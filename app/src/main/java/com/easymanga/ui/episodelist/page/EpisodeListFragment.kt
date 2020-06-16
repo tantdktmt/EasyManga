@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import com.easymanga.BuildConfig
@@ -18,20 +17,16 @@ import com.easymanga.ui.base.BaseFragment
 import com.easymanga.util.CommonUtil
 import com.easymanga.util.Constant
 import kotlinx.android.synthetic.main.fragment_episode_list.*
-import javax.inject.Inject
 
 class EpisodeListFragment : BaseFragment() {
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var viewDataBinding: FragmentEpisodeListBinding
 
     private val episodes = ArrayList<Episode>()
 
     override fun onAttach(context: Context) {
-        EasyMangaApplication.getInstance().getAppComponent().inject(this)
         super.onAttach(context)
+        EasyMangaApplication.getInstance().getAppComponent().inject(this)
     }
 
     override fun onCreateView(
@@ -41,10 +36,7 @@ class EpisodeListFragment : BaseFragment() {
     ): View? {
         viewDataBinding = FragmentEpisodeListBinding.inflate(inflater, container, false)
             .apply {
-                viewmodel =
-                    ViewModelProvider(this@EpisodeListFragment, viewModelFactory).get(
-                        EpisodeListViewModel::class.java
-                    )
+                viewmodel = viewModel
                 lifecycleOwner = viewLifecycleOwner
             }
         return viewDataBinding.root

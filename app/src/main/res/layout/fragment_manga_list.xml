@@ -8,7 +8,7 @@
 
         <variable
             name="viewmodel"
-            type="com.easymanga.ui.mangalist.MangaListViewModel" />
+            type="com.easymanga.ui.SharedViewModel" />
     </data>
 
     <RelativeLayout

@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
-import com.easymanga.R
+import com.easymanga.databinding.FragmentMangaDetailBinding
 import com.easymanga.ui.base.BaseFragment
 import com.easymanga.ui.episodelist.page.SimpleViewPagerAdapter
 import com.easymanga.ui.episodelist.page.ZoomOutPageTransformer
@@ -21,16 +21,29 @@ class MangaDetailFragment : BaseFragment() {
         private val DEBUG_SUB_TAG = "[${MangaDetailFragment::class.java.simpleName}]"
     }
 
+    private lateinit var viewDataBinding: FragmentMangaDetailBinding
+
     private val TABS = arrayOf("Chi tiết", "Chapters")
 
     private val args: MangaDetailFragmentArgs by navArgs()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        Log.d(Constant.LOG_TAG, "$DEBUG_SUB_TAG argument=${args.mangaDetail}")
+        viewModel.mangaDetail.value = args.mangaDetail
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_manga_detail, container, false)
+        viewDataBinding = FragmentMangaDetailBinding.inflate(inflater, container, false).apply {
+            viewmodel = viewModel
+            lifecycleOwner = viewLifecycleOwner
+        }
+        return viewDataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,7 +53,5 @@ class MangaDetailFragment : BaseFragment() {
         TabLayoutMediator(tabs, vp_main) { tab, position ->
             tab.text = TABS[position]
         }.attach()
-
-        Log.d(Constant.LOG_TAG, "$DEBUG_SUB_TAG argument=${args.mangaDetail}")
     }
 }

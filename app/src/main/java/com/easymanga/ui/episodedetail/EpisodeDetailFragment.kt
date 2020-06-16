@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,12 +18,8 @@ import com.easymanga.ui.base.BaseFragment
 import com.easymanga.util.CommonUtil
 import com.easymanga.util.Constant
 import kotlinx.android.synthetic.main.fragment_episode_detail.*
-import javax.inject.Inject
 
 class EpisodeDetailFragment : BaseFragment() {
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var viewDataBinding: FragmentEpisodeDetailBinding
 
@@ -44,10 +39,7 @@ class EpisodeDetailFragment : BaseFragment() {
     ): View? {
         viewDataBinding = FragmentEpisodeDetailBinding.inflate(inflater, container, false)
             .apply {
-                viewmodel =
-                    ViewModelProvider(this@EpisodeDetailFragment, viewModelFactory).get(
-                        EpisodeDetailViewModel::class.java
-                    )
+                viewmodel = viewModel
                 lifecycleOwner = viewLifecycleOwner
             }
         return viewDataBinding.root

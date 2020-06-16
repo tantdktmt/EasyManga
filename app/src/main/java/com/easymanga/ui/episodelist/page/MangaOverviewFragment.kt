@@ -17,8 +17,10 @@ class MangaOverviewFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewDataBinding = FragmentMangaOverviewBinding.inflate(inflater, container, false)
-        viewDataBinding.manga = Manga()
-        viewDataBinding.manga?.summary = "Hehe"
+            .apply {
+                viewmodel = viewModel
+                lifecycleOwner = viewLifecycleOwner
+            }
         return viewDataBinding.root
     }
 

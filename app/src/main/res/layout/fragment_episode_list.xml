@@ -8,7 +8,7 @@
 
         <variable
             name="viewmodel"
-            type="com.easymanga.ui.episodelist.page.EpisodeListViewModel" />
+            type="com.easymanga.ui.SharedViewModel" />
     </data>
 
     <RelativeLayout
