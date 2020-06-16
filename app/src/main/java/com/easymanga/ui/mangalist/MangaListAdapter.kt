@@ -2,7 +2,6 @@ package com.easymanga.ui.mangalist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.ViewDataBinding
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +21,8 @@ class MangaListAdapter(private val mangas: List<Manga>) :
             dataBinding.setVariable(BR.itemData, manga)
             dataBinding.executePendingBindings()
             itemView.onClick {
-                itemView.findNavController().navigate(R.id.go_to_episode_list_action)
+                val action = MangaListFragmentDirections.goToMangaDetailAction(manga)
+                itemView.findNavController().navigate(action)
             }
         }
     }

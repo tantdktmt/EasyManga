@@ -1,4 +1,4 @@
-package com.easymanga.ui.episodelist
+package com.easymanga.ui.episodelist.page
 
 import android.content.Context
 import android.os.Bundle
@@ -60,7 +60,8 @@ class EpisodeListFragment : BaseFragment() {
         rv_episode.apply {
             layoutManager = GridLayoutManager(context, 2)
             itemAnimator = DefaultItemAnimator()
-            this.adapter = EpisodeListAdapter(episodes)
+            this.adapter =
+                EpisodeListAdapter(episodes)
         }
     }
 

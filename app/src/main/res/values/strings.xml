@@ -4,6 +4,7 @@
     <!-- Screen label -->
     <string name="splash">Splash</string>
     <string name="manga_list">Manga List</string>
+    <string name="manga_detail">Manga Detail</string>
     <string name="episode_list">Episode List</string>
     <string name="episode_detail">Episode Detail</string>
 </resources>

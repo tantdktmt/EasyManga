@@ -29,8 +29,8 @@
         tools:layout="@layout/fragment_manga_list">
 
         <action
-            android:id="@+id/go_to_episode_list_action"
-            app:destination="@id/episode_list_dest"
+            android:id="@+id/go_to_manga_detail_action"
+            app:destination="@id/manga_detail_dest"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -38,10 +38,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/episode_list_dest"
-        android:name="com.easymanga.ui.episodelist.EpisodeListFragment"
-        android:label="@string/episode_list"
-        tools:layout="@layout/fragment_episode_list">
+        android:id="@+id/manga_detail_dest"
+        android:name="com.easymanga.ui.episodelist.MangaDetailFragment"
+        android:label="@string/manga_detail"
+        tools:layout="@layout/fragment_manga_detail">
 
         <action
             android:id="@+id/go_to_episode_detail_action"
@@ -50,6 +50,12 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+
+        <argument
+            android:name="mangaDetail"
+            android:defaultValue="@null"
+            app:argType="com.easymanga.data.Manga"
+            app:nullable="true" />
     </fragment>
 
     <fragment

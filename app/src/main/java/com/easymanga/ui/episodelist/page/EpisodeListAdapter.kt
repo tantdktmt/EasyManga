@@ -1,4 +1,4 @@
-package com.easymanga.ui.episodelist
+package com.easymanga.ui.episodelist.page
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.easymanga.BR
 import com.easymanga.data.Episode
 import com.easymanga.databinding.EpisodeItemLayoutBinding
+import com.easymanga.ui.episodelist.MangaDetailFragmentDirections
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class EpisodeListAdapter(private val episodes: List<Episode>) :
@@ -20,7 +21,10 @@ class EpisodeListAdapter(private val episodes: List<Episode>) :
             dataBinding.setVariable(BR.itemData, episode)
             dataBinding.executePendingBindings()
             itemView.onClick {
-                val action = EpisodeListFragmentDirections.goToEpisodeDetailAction(episode.url)
+                val action =
+                    MangaDetailFragmentDirections.goToEpisodeDetailAction(
+                        episode.url
+                    )
                 itemView.findNavController().navigate(action)
             }
         }

@@ -1,6 +1,8 @@
 package com.easymanga.data
 
+import android.os.Parcelable
 import com.google.gson.annotations.Expose
+import kotlinx.android.parcel.Parcelize
 
 data class Channel(
 
@@ -26,7 +28,8 @@ data class ChannelData(
     @Expose val total: Int
 )
 
-data class Manga(val name: String, val imageUrl: String, val summary: String)
+@Parcelize
+data class Manga(val name: String, val imageUrl: String, val summary: String) : Parcelable
 
 data class Episode(val name: String, val url: String, val coverUrl: String)
 

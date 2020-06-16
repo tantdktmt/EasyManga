@@ -1,9 +1,7 @@
-package com.easymanga.ui.episodelist
+package com.easymanga.ui.episodelist.page
 
 import androidx.lifecycle.MutableLiveData
-import com.easymanga.data.Channel
 import com.easymanga.data.Episode
-import com.easymanga.data.Manga
 import com.easymanga.data.network.NetworkDataManager
 import com.easymanga.ui.base.BaseViewModel
 import com.easymanga.util.rx.SchedulerProvider

@@ -6,8 +6,8 @@ import com.easymanga.di.module.NetModule
 import com.easymanga.di.module.ViewModelModule
 import com.easymanga.ui.episodedetail.EpisodeDetailFragment
 import com.easymanga.ui.episodedetail.EpisodeDetailViewModel
-import com.easymanga.ui.episodelist.EpisodeListFragment
-import com.easymanga.ui.episodelist.EpisodeListViewModel
+import com.easymanga.ui.episodelist.page.EpisodeListFragment
+import com.easymanga.ui.episodelist.page.EpisodeListViewModel
 import com.easymanga.ui.mangalist.MangaListFragment
 import com.easymanga.ui.mangalist.MangaListViewModel
 import dagger.Component
