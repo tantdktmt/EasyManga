@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -21,12 +22,14 @@ abstract class BaseFragment : Fragment() {
 
     protected lateinit var navController: NavController
     protected lateinit var handler: Handler
-    protected lateinit var viewModel: SharedViewModel
+
+    protected val viewModel: SharedViewModel by activityViewModels {
+        viewModelFactory
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         EasyMangaApplication.getInstance().getAppComponent().inject(this)
-        viewModel = ViewModelProvider(requireActivity(), viewModelFactory).get(SharedViewModel::class.java)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
