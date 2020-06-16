@@ -12,11 +12,14 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.easymanga.BuildConfig
 import com.easymanga.EasyMangaApplication
+import com.easymanga.R
 import com.easymanga.data.Page
 import com.easymanga.databinding.FragmentEpisodeDetailBinding
 import com.easymanga.ui.base.BaseFragment
+import com.easymanga.ui.base.BaseViewModel
 import com.easymanga.util.CommonUtil
 import com.easymanga.util.Constant
+import com.easymanga.util.DialogUtil
 import kotlinx.android.synthetic.main.fragment_episode_detail.*
 
 class EpisodeDetailFragment : BaseFragment() {
@@ -67,6 +70,12 @@ class EpisodeDetailFragment : BaseFragment() {
             pages.clear()
             pages.addAll(it)
             rv_page.adapter?.notifyDataSetChanged()
+        })
+
+        viewDataBinding.viewmodel?.loadingState?.observe(viewLifecycleOwner, Observer {
+            if (it == BaseViewModel.LoadingState.IDLE) {
+                DialogUtil.showMessageDialog(requireContext(), R.string.alert_error_message)
+            }
         })
     }
 

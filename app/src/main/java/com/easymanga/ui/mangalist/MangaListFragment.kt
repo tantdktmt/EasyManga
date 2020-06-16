@@ -11,11 +11,14 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import com.easymanga.BuildConfig
 import com.easymanga.EasyMangaApplication
+import com.easymanga.R
 import com.easymanga.data.Manga
 import com.easymanga.databinding.FragmentMangaListBinding
 import com.easymanga.ui.base.BaseFragment
+import com.easymanga.ui.base.BaseViewModel
 import com.easymanga.util.CommonUtil
 import com.easymanga.util.Constant
+import com.easymanga.util.DialogUtil
 import kotlinx.android.synthetic.main.fragment_manga_list.*
 
 class MangaListFragment : BaseFragment() {
@@ -70,6 +73,12 @@ class MangaListFragment : BaseFragment() {
             }
             // TESTING
             rv_manga.adapter?.notifyDataSetChanged()
+        })
+
+        viewDataBinding.viewmodel?.loadingState?.observe(viewLifecycleOwner, Observer {
+            if (it == BaseViewModel.LoadingState.IDLE) {
+                DialogUtil.showMessageDialog(requireContext(), R.string.alert_error_message)
+            }
         })
     }
 

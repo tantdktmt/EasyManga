@@ -16,9 +16,19 @@ open class BaseViewModel(
 
     val dataLoading = MutableLiveData<Boolean>().apply { value = false }
 
+    val loadingState = MutableLiveData<LoadingState>()
+        .apply {
+            value = LoadingState.IDLE
+        }
+
     val toastMessage = MutableLiveData<String>()
 
     override fun onCleared() {
         compositeDisposable.dispose()
+    }
+
+    enum class LoadingState {
+
+        IDLE, LOADING, SUCCESS, FAILED
     }
 }

@@ -46,13 +46,16 @@ class SharedViewModel @Inject constructor(
     }
 
     fun fetchMangaList() {
+        loadingState.value = LoadingState.LOADING
         dataLoading.value = true
         compositeDisposable.add(networkDataManager.getMangaList().subscribeOn(schedulerProvider.io())
             .observeOn(schedulerProvider.ui())
             .subscribe({
                 dataLoading.value = false
+                loadingState.value = LoadingState.SUCCESS
                 mangaList.value = it
             },{
+                loadingState.value = LoadingState.FAILED
                 dataLoading.value = false
             }))
     }
