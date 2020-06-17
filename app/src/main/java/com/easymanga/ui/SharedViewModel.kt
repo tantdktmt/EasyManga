@@ -24,9 +24,7 @@ class SharedViewModel @Inject constructor(
     val mangaDetail = MutableLiveData<Manga>()
 
     fun fetchChannelList() {
-        dataLoading.value = true
         networkDataManager.getChannels { isSuccess, channels ->
-            dataLoading.value = false
             if (isSuccess) {
                 channelList.value = channels
             }
@@ -34,42 +32,39 @@ class SharedViewModel @Inject constructor(
     }
 
     fun fetchEpisodeList() {
-        dataLoading.value = true
+        loadingState.value = LoadingState.LOADING
         compositeDisposable.add(networkDataManager.getEpisodeList().subscribeOn(schedulerProvider.io())
             .observeOn(schedulerProvider.ui())
             .subscribe({
                 episodeList.value = it
-                dataLoading.value = false
+                loadingState.value = LoadingState.SUCCESS
             }, {
-                dataLoading.value = false
+                loadingState.value = LoadingState.FAILED
             }))
     }
 
     fun fetchMangaList() {
         loadingState.value = LoadingState.LOADING
-        dataLoading.value = true
         compositeDisposable.add(networkDataManager.getMangaList().subscribeOn(schedulerProvider.io())
             .observeOn(schedulerProvider.ui())
             .subscribe({
-                dataLoading.value = false
-                loadingState.value = LoadingState.SUCCESS
                 mangaList.value = it
+                loadingState.value = LoadingState.SUCCESS
             },{
                 loadingState.value = LoadingState.FAILED
-                dataLoading.value = false
             }))
     }
 
     fun fetchPageList(episodeUrl: String) {
-        dataLoading.value = true
+        loadingState.value = LoadingState.LOADING
         compositeDisposable.add(
             networkDataManager.getPageList(episodeUrl).subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.ui())
                 .subscribe({
                     pageList.value = it
-                    dataLoading.value = false
+                    loadingState.value = LoadingState.SUCCESS
                 }, {
-                    dataLoading.value = false
+                    loadingState.value = LoadingState.FAILED
                 })
         )
     }

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Common dimens -->
+    <dimen name="textsize_all_no_items_medium">18sp</dimen>
+
     <dimen name="manga_list_padding">10dp</dimen>
     <dimen name="manga_detail_overview_padding">15dp</dimen>
     <dimen name="manga_detail_overview_photo_padding">30dp</dimen>

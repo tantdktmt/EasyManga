@@ -14,8 +14,6 @@ open class BaseViewModel(
 
     val empty = MutableLiveData<Boolean>().apply { value = false }
 
-    val dataLoading = MutableLiveData<Boolean>().apply { value = false }
-
     val loadingState = MutableLiveData<LoadingState>()
         .apply {
             value = LoadingState.IDLE

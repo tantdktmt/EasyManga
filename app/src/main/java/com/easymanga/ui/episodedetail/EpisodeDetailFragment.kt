@@ -73,7 +73,7 @@ class EpisodeDetailFragment : BaseFragment() {
         })
 
         viewDataBinding.viewmodel?.loadingState?.observe(viewLifecycleOwner, Observer {
-            if (it == BaseViewModel.LoadingState.IDLE) {
+            if (it == BaseViewModel.LoadingState.FAILED) {
                 DialogUtil.showMessageDialog(requireContext(), R.string.alert_error_message)
             }
         })

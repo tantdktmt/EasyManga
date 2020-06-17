@@ -6,6 +6,8 @@
 
         <import type="android.view.View" />
 
+        <import type="com.easymanga.ui.base.BaseViewModel.LoadingState" />
+
         <variable
             name="viewmodel"
             type="com.easymanga.ui.SharedViewModel" />
@@ -22,20 +24,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="none"
-            android:visibility="@{safeUnbox(viewmodel.dataLoading) ? View.GONE : View.VISIBLE}" />
+            android:visibility="@{viewmodel.loadingState == LoadingState.LOADING ? View.GONE : View.VISIBLE}" />
 
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:visibility="@{safeUnbox(viewmodel.dataLoading) ? View.VISIBLE : View.GONE}" />
+            android:visibility="@{viewmodel.loadingState == LoadingState.LOADING ? View.VISIBLE : View.GONE}" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="No episode to display"
-            android:textSize="18sp"
-            android:visibility="@{safeUnbox(viewmodel.empty) ? View.VISIBLE : View.GONE}" />
+            android:text="@string/mes_no_items"
+            android:textSize="@dimen/textsize_all_no_items_medium"
+            android:visibility="@{(viewmodel.loadingState != LoadingState.IDLE &amp;&amp; viewmodel.loadingState != LoadingState.LOADING &amp;&amp; viewmodel.episodeList.size() &lt;= 0) ? View.VISIBLE : View.GONE}" />
     </RelativeLayout>
 </layout>
