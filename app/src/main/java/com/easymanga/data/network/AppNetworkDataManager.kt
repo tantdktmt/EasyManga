@@ -33,14 +33,14 @@ class AppNetworkDataManager @Inject constructor(private val retrofitNetworkData:
         })
     }
 
-    override fun getEpisodeList(): Single<List<Episode>> {
+    override fun getEpisodeList(): Single<ArrayList<Episode>> {
         return Single.create {
             try {
                 val doc = Jsoup.connect(EndPoint.MANGA_LIST_URL).get()
                 val result = doc.select("table tr td a").map {
                     Episode(it.text(), it.attr("href"), getCoverUrl(it.attr("href")))
                 }
-                it.onSuccess(result)
+                it.onSuccess(ArrayList(result))
             } catch (e: Exception) {
                 it.onError(e)
             }
@@ -52,7 +52,7 @@ class AppNetworkDataManager @Inject constructor(private val retrofitNetworkData:
         return doc.select(".bbCodeImage").first().attr("src")
     }
 
-    override fun getMangaList(): Single<List<Manga>> {
+    override fun getMangaList(): Single<ArrayList<Manga>> {
         return Single.create {
             try {
                 val doc = Jsoup.connect(EndPoint.MANGA_LIST_URL).get()
@@ -60,21 +60,21 @@ class AppNetworkDataManager @Inject constructor(private val retrofitNetworkData:
                 val result = doc.select(".LbImage:first-of-type").map {
                     Manga("Chie cô bé hạt tiêu", it.attr("src"), summary)
                 }
-                it.onSuccess(result)
+                it.onSuccess(ArrayList(result))
             } catch (e: Exception) {
                 it.onError(e)
             }
         }
     }
 
-    override fun getPageList(episodeUrl: String): Single<List<Page>> {
+    override fun getPageList(episodeUrl: String): Single<ArrayList<Page>> {
         return Single.create {
             try {
                 val doc = Jsoup.connect(episodeUrl).get()
                 val result = doc.select(".bbCodeImage").map {
                     Page(it.attr("src"))
                 }
-                it.onSuccess(result)
+                it.onSuccess(ArrayList(result))
             } catch (e: Exception) {
                 it.onError(e)
             }

@@ -79,4 +79,9 @@ class EpisodeDetailFragment : BaseFragment() {
             viewDataBinding.viewmodel?.fetchPageList(episodeUrl)
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewDataBinding.viewmodel?.pageList?.value?.clear()
+    }
 }

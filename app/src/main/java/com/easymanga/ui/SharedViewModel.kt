@@ -20,7 +20,7 @@ class SharedViewModel @Inject constructor(
     val channelList = MutableLiveData<List<Channel>>()
     val episodeList = MutableLiveData<List<Episode>>()
     val mangaList = MutableLiveData<List<Manga>>()
-    val pageList = MutableLiveData<List<Page>>()
+    val pageList = MutableLiveData<ArrayList<Page>>()
     val mangaDetail = MutableLiveData<Manga>()
 
     fun fetchChannelList() {
