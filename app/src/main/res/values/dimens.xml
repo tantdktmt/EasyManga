@@ -3,9 +3,9 @@
 
     <!-- Common dimens -->
     <dimen name="textsize_all_no_items_medium">18sp</dimen>
+    <dimen name="margin_all_itemtitle_6dp">6dp</dimen>
 
-    <dimen name="manga_list_padding">10dp</dimen>
-    <dimen name="manga_detail_overview_padding">15dp</dimen>
-    <dimen name="manga_detail_overview_photo_padding">30dp</dimen>
-    <dimen name="manga_list_item_title_gap">6dp</dimen>
+    <dimen name="padding_mangalist_listitem_10dp">10dp</dimen>
+    <dimen name="padding_mangadetail_overview_15dp">15dp</dimen>
+    <dimen name="padding_mangadetail_photoleftright_30dp">30dp</dimen>
 </resources>
