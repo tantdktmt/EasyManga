@@ -4,7 +4,9 @@ import com.easymanga.EasyMangaApplication
 import com.easymanga.di.module.AppModule
 import com.easymanga.di.module.NetModule
 import com.easymanga.di.module.ViewModelModule
+import com.easymanga.ui.MainActivity
 import com.easymanga.ui.SharedViewModel
+import com.easymanga.ui.base.BaseActivity
 import com.easymanga.ui.base.BaseFragment
 import com.easymanga.ui.episodedetail.EpisodeDetailFragment
 import com.easymanga.ui.episodelist.page.EpisodeListFragment
@@ -24,6 +26,10 @@ interface AppComponent {
                 .build()
         }
     }
+
+    fun inject(activity: BaseActivity)
+
+    fun inject(activity: MainActivity)
 
     fun inject(fragment: BaseFragment)
 
