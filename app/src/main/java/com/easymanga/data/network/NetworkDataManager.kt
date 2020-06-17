@@ -9,11 +9,11 @@ interface NetworkDataManager {
 
     fun getChannels(onResult: (isSuccess: Boolean, channels: List<Channel>?) -> Unit)
 
-    fun getEpisodeList(): Single<List<Episode>>
+    fun getEpisodeList(): Single<ArrayList<Episode>>
 
-    fun getMangaList(): Single<List<Manga>>
+    fun getMangaList(): Single<ArrayList<Manga>>
 
-    fun getPageList(episodeUrl: String): Single<List<Page>>
+    fun getPageList(episodeUrl: String): Single<ArrayList<Page>>
 
     interface RetrofitApi {
 
