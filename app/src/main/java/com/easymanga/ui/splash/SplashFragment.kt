@@ -25,6 +25,7 @@ class SplashFragment : BaseFragment() {
         super.onResume()
         handler.postDelayed({
             navController.navigate(R.id.next_action)
+            navController.graph.startDestination = R.id.manga_list_dest
         }, SPLASH_DURATION)
     }
 }

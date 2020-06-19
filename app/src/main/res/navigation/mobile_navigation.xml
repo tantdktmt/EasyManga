@@ -38,6 +38,13 @@
     </fragment>
 
     <fragment
+        android:id="@+id/storage_dest"
+        android:name="com.easymanga.ui.storage.StorageFragment"
+        android:label="@string/storage_title"
+        tools:layout="@layout/fragment_storage">
+    </fragment>
+
+    <fragment
         android:id="@+id/manga_detail_dest"
         android:name="com.easymanga.ui.episodelist.MangaDetailFragment"
         android:label="@string/manga_detail"

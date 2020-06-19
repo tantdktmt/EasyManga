@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.easymanga.ui.base.BaseViewModel.LoadingState" />
+
+        <variable
+            name="viewmodel"
+            type="com.easymanga.ui.SharedViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/padding_mangalist_listitem_10dp"
+        tools:context=".ui.storage.StorageFragment">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Storage screen" />
+    </RelativeLayout>
+</layout>

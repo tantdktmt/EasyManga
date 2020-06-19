@@ -7,6 +7,8 @@
     <string name="manga_detail">Manga Detail</string>
     <string name="episode_list">Episode List</string>
     <string name="episode_detail">Episode Detail</string>
+    <string name="home_title">Home</string>
+    <string name="storage_title">Storage</string>
 
     <string name="alert_title_notification">Notification</string>
     <string name="alert_error_message">The internet is not available or an error occur!</string>
