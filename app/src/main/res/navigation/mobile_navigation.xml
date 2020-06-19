@@ -46,7 +46,7 @@
 
     <fragment
         android:id="@+id/manga_detail_dest"
-        android:name="com.easymanga.ui.episodelist.MangaDetailFragment"
+        android:name="com.easymanga.ui.mangadetail.MangaDetailFragment"
         android:label="@string/manga_detail"
         tools:layout="@layout/fragment_manga_detail">
 

@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/padding_mangalist_listitem_10dp"
-        tools:context=".ui.episodelist.page.EpisodeListFragment">
+        tools:context=".ui.mangadetail.page.EpisodeListFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_episode"

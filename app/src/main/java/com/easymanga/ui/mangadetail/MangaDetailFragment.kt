@@ -1,4 +1,4 @@
-package com.easymanga.ui.episodelist
+package com.easymanga.ui.mangadetail
 
 import android.os.Bundle
 import android.util.Log
@@ -9,7 +9,7 @@ import androidx.navigation.fragment.navArgs
 import com.easymanga.databinding.FragmentMangaDetailBinding
 import com.easymanga.ui.base.BaseFragment
 import com.easymanga.ui.base.ZoomOutPageTransformer
-import com.easymanga.ui.episodelist.page.MangaDetailPagerAdapter
+import com.easymanga.ui.mangadetail.page.MangaDetailPagerAdapter
 import com.easymanga.util.Constant
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_manga_detail.*

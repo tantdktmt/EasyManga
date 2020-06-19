@@ -9,7 +9,7 @@ import com.easymanga.ui.SharedViewModel
 import com.easymanga.ui.base.BaseActivity
 import com.easymanga.ui.base.BaseFragment
 import com.easymanga.ui.episodedetail.EpisodeDetailFragment
-import com.easymanga.ui.episodelist.page.EpisodeListFragment
+import com.easymanga.ui.mangadetail.page.EpisodeListFragment
 import com.easymanga.ui.mangalist.MangaListFragment
 import com.easymanga.ui.storage.StorageFragment
 import dagger.Component

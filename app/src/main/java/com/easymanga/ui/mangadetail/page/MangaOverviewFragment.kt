@@ -1,4 +1,4 @@
-package com.easymanga.ui.episodelist.page
+package com.easymanga.ui.mangadetail.page
 
 import android.os.Bundle
 import android.view.LayoutInflater

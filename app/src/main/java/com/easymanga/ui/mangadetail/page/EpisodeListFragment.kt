@@ -1,4 +1,4 @@
-package com.easymanga.ui.episodelist.page
+package com.easymanga.ui.mangadetail.page
 
 import android.content.Context
 import android.os.Bundle
