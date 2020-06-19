@@ -1,10 +1,10 @@
-package com.easymanga.ui.episodelist.page
+package com.easymanga.ui.storage.page
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class SimpleViewPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
+class StoragePagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
 
     override fun getItemCount(): Int {
         return 2
@@ -12,8 +12,8 @@ class SimpleViewPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> MangaOverviewFragment()
-            else -> EpisodeListFragment()
+            0 -> DownloadedFragment()
+            else -> HistoryFragment()
         }
     }
 }

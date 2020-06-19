@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.easymanga.databinding.FragmentMangaDetailBinding
 import com.easymanga.ui.base.BaseFragment
-import com.easymanga.ui.episodelist.page.SimpleViewPagerAdapter
-import com.easymanga.ui.episodelist.page.ZoomOutPageTransformer
+import com.easymanga.ui.base.ZoomOutPageTransformer
+import com.easymanga.ui.episodelist.page.MangaDetailPagerAdapter
 import com.easymanga.util.Constant
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_manga_detail.*
@@ -48,9 +48,9 @@ class MangaDetailFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        vp_main.adapter = SimpleViewPagerAdapter(requireActivity())
-        vp_main.setPageTransformer(ZoomOutPageTransformer())
-        TabLayoutMediator(tabs, vp_main) { tab, position ->
+        view_pager.adapter = MangaDetailPagerAdapter(requireActivity())
+        view_pager.setPageTransformer(ZoomOutPageTransformer())
+        TabLayoutMediator(tabs, view_pager) { tab, position ->
             tab.text = TABS[position]
         }.attach()
     }

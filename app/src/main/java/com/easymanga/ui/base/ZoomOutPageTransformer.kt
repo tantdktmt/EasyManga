@@ -1,4 +1,4 @@
-package com.easymanga.ui.episodelist.page
+package com.easymanga.ui.base
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
