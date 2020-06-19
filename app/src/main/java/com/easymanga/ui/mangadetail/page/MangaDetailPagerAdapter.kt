@@ -1,4 +1,4 @@
-package com.easymanga.ui.episodelist.page
+package com.easymanga.ui.mangadetail.page
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
