@@ -28,7 +28,6 @@ class MainActivity : BaseActivity() {
                 as NavHostFragment? ?: return
         navController = host.navController
         appBarConfiguration = AppBarConfiguration(navController.graph)
-        setSupportActionBar(toolbar)
         bottom_nav_view.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
