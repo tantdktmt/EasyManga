@@ -41,8 +41,7 @@
         android:id="@+id/storage_dest"
         android:name="com.easymanga.ui.storage.StorageFragment"
         android:label="@string/storage_title"
-        tools:layout="@layout/fragment_storage">
-    </fragment>
+        tools:layout="@layout/fragment_storage" />
 
     <fragment
         android:id="@+id/manga_detail_dest"
@@ -53,6 +52,14 @@
         <action
             android:id="@+id/go_to_episode_detail_action"
             app:destination="@id/episode_detail_dest"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/go_to_download_action"
+            app:destination="@id/download_dest"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -77,4 +84,10 @@
             app:argType="string"
             app:nullable="true" />
     </fragment>
+
+    <fragment
+        android:id="@+id/download_dest"
+        android:name="com.easymanga.ui.download.DownloadFragment"
+        android:label="@string/download"
+        tools:layout="@layout/fragment_download" />
 </navigation>

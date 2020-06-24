@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="itemData"
+            type="com.easymanga.data.Episode" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_download_item"
+        android:paddingLeft="@dimen/paddingleftright_download_item"
+        android:paddingTop="@dimen/paddingtopbottom_download_item"
+        android:paddingRight="@dimen/paddingleftright_download_item"
+        android:paddingBottom="@dimen/paddingtopbottom_download_item">
+
+        <TextView
+            android:id="@+id/tv_chapter_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:background="@{itemData.selected}"
+            android:gravity="center"
+            android:text="@{String.valueOf(itemData.number)}" />
+    </FrameLayout>
+</layout>

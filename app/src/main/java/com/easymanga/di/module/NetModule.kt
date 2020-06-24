@@ -1,7 +1,11 @@
 package com.easymanga.di.module
 
-import com.easymanga.data.network.NetworkDataManager
+import android.content.Context
 import com.easymanga.data.network.AppNetworkDataManager
+import com.easymanga.data.network.DownloadManager
+import com.easymanga.data.network.NetworkDataManager
+import com.easymanga.di.ApplicationContext
+import com.easymanga.util.rx.SchedulerProvider
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -38,7 +42,19 @@ class NetModule(val baseUrl: String) {
 
     @Provides
     @Singleton
-    fun provideApiManager(retrofitNetworkData: NetworkDataManager.RetrofitApi): NetworkDataManager {
+    fun provideNetworkDataManager(
+        retrofitNetworkData: NetworkDataManager.RetrofitApi
+    ): NetworkDataManager {
         return AppNetworkDataManager(retrofitNetworkData)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDownloadManager(
+        networkDataManager: NetworkDataManager,
+        schedulerProvider: SchedulerProvider,
+        @ApplicationContext context: Context
+    ): DownloadManager {
+        return DownloadManager(networkDataManager, schedulerProvider, context)
     }
 }

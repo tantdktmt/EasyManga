@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">EasyManga</string>
 
+    <!-- Common -->
+    <string name="all_selectall">Select all</string>
+    <string name="all_download">Download</string>
+
     <!-- Screen label -->
     <string name="splash">Splash</string>
     <string name="manga_list">Manga List</string>
@@ -9,8 +13,12 @@
     <string name="episode_detail">Episode Detail</string>
     <string name="home_title">Home</string>
     <string name="storage_title">Storage</string>
+    <string name="download">Download</string>
 
     <string name="alert_title_notification">Notification</string>
     <string name="alert_error_message">The internet is not available or an error occur!</string>
     <string name="mes_no_items">No items</string>
+    <string name="download_countselectedchapters">%1$d chapters selected</string>
+    <string name="download_totalchapters">Total %1$d chapters</string>
+    <string name="download_episodesdownloadednoti">Added to download list</string>
 </resources>
