@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
+import com.easymanga.R
 import com.easymanga.databinding.FragmentMangaDetailBinding
 import com.easymanga.ui.base.BaseFragment
 import com.easymanga.ui.base.ZoomOutPageTransformer
@@ -13,6 +14,7 @@ import com.easymanga.ui.mangadetail.page.MangaDetailPagerAdapter
 import com.easymanga.util.Constant
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_manga_detail.*
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class MangaDetailFragment : BaseFragment() {
 
@@ -53,5 +55,9 @@ class MangaDetailFragment : BaseFragment() {
         TabLayoutMediator(tabs, view_pager) { tab, position ->
             tab.text = TABS[position]
         }.attach()
+
+        iv_download.onClick {
+            navController.navigate(R.id.go_to_download_action)
+        }
     }
 }

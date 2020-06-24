@@ -3,6 +3,7 @@ package com.easymanga.di.module
 import android.content.Context
 import com.easymanga.EasyMangaApplication
 import com.easymanga.debug.Person
+import com.easymanga.di.ApplicationContext
 import com.easymanga.util.rx.AppSchedulerProvider
 import com.easymanga.util.rx.SchedulerProvider
 import dagger.Module
@@ -14,7 +15,7 @@ import javax.inject.Singleton
 class AppModule(private var context: EasyMangaApplication) {
 
     @Provides
-    @Singleton
+    @ApplicationContext
     fun provideApplicationContext(): Context {
         return context
     }

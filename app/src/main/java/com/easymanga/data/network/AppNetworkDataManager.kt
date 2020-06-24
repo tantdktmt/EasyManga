@@ -8,7 +8,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class AppNetworkDataManager @Inject constructor(private val retrofitNetworkData: NetworkDataManager.RetrofitApi) :
+class AppNetworkDataManager @Inject constructor(
+    private val retrofitNetworkData: NetworkDataManager.RetrofitApi
+) :
     NetworkDataManager {
 
     companion object {
@@ -37,8 +39,15 @@ class AppNetworkDataManager @Inject constructor(private val retrofitNetworkData:
         return Single.create {
             try {
                 val doc = Jsoup.connect(EndPoint.MANGA_LIST_URL).get()
+                var chapterNumber = 0
                 val result = doc.select("table tr td a").map {
-                    Episode(it.text(), it.attr("href"), getCoverUrl(it.attr("href")))
+                    Episode(
+                        it.text(),
+                        ++chapterNumber,
+                        it.attr("href"),
+                        getCoverUrl(it.attr("href")),
+                        false
+                    )
                 }
                 it.onSuccess(ArrayList(result))
             } catch (e: Exception) {

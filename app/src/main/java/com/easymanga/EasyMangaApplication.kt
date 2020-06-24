@@ -3,6 +3,8 @@ package com.easymanga
 import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
+import com.downloader.PRDownloader
+import com.downloader.PRDownloaderConfig
 import com.easymanga.data.network.EndPoint
 import com.easymanga.di.component.AppComponent
 
@@ -25,6 +27,10 @@ class EasyMangaApplication : Application() {
         super.onCreate()
         instance = this
         appComponent = AppComponent.create(this, EndPoint.BASE_URL)
+        PRDownloader.initialize(
+            this,
+            PRDownloaderConfig.newBuilder().setDatabaseEnabled(true).build()
+        )
     }
 
     fun getAppComponent(): AppComponent {

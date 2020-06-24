@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Common dimens -->
+    <!-- Common -->
     <dimen name="textsize_all_no_items_medium">18sp</dimen>
     <dimen name="margin_all_itemtitle_6dp">6dp</dimen>
+    <dimen name="margin_all_small">3dp</dimen>
+    <dimen name="size_all_divider">0.5dp</dimen>
 
     <dimen name="padding_mangalist_listitem_10dp">10dp</dimen>
     <dimen name="padding_mangadetail_overview_15dp">15dp</dimen>
     <dimen name="padding_mangadetail_photoleftright_30dp">30dp</dimen>
     <dimen name="margin_storage_tab">10dp</dimen>
     <dimen name="padding_storage_content">15dp</dimen>
+    <dimen name="paddingleftright_download_item">4dp</dimen>
+    <dimen name="paddingtopbottom_download_item">8dp</dimen>
+    <dimen name="height_download_item">60dp</dimen>
+    <dimen name="margintop_download">9dp</dimen>
+    <dimen name="paddingleft_download_content">14dp</dimen>
 </resources>

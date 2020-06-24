@@ -2,12 +2,14 @@ package com.easymanga.ui.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.easymanga.data.network.DownloadManager
 import com.easymanga.data.network.NetworkDataManager
 import com.easymanga.util.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 
 open class BaseViewModel(
     protected val networkDataManager: NetworkDataManager,
+    protected val downloadManager: DownloadManager,
     protected val compositeDisposable: CompositeDisposable,
     protected val schedulerProvider: SchedulerProvider
 ) : ViewModel() {
