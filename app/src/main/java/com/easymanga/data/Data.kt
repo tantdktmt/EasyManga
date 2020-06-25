@@ -29,7 +29,7 @@ data class ChannelData(
 )
 
 @Parcelize
-data class Manga(val name: String, val imageUrl: String, val summary: String) : Parcelable
+data class Manga(val name: String, val imageUrl: String = "", val summary: String = "") : Parcelable
 
 data class Episode(
     val name: String,
