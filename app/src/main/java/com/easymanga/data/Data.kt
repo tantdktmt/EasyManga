@@ -32,10 +32,10 @@ data class ChannelData(
 data class Manga(val name: String, val imageUrl: String = "", val summary: String = "") : Parcelable
 
 data class Episode(
-    val name: String,
+    val name: String = "",
     val number: Int,
-    val url: String,
-    val coverUrl: String,
+    val url: String = "",
+    val coverUrl: String = "",
     var selected: Boolean
 )
 
