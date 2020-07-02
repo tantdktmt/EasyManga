@@ -10,6 +10,7 @@ import com.easymanga.data.Episode
 import com.easymanga.data.Page
 import com.easymanga.util.CommonUtil
 import com.easymanga.util.Constant
+import com.easymanga.util.MangaUtil
 import com.easymanga.util.rx.SchedulerProvider
 import java.io.File
 import java.util.*
@@ -39,7 +40,7 @@ class DownloadManager @Inject constructor(
         networkDataManager.getPageList(episode.url).subscribeOn(schedulerProvider.io())
             .observeOn(schedulerProvider.ui())
             .subscribe({
-                downloadPages("Chie co be hat tieu", episode.number, it)
+                downloadPages(MangaUtil.CHIE_CO_BE_HAT_TIEU_DOWNLOADED_FOLDER, episode.number, it)
             }, {
                 if (BuildConfig.DEBUG) {
                     Log.d(

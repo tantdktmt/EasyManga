@@ -17,6 +17,7 @@ import com.easymanga.databinding.FragmentDownloadBinding
 import com.easymanga.ui.base.BaseFragment
 import com.easymanga.util.CommonUtil
 import com.easymanga.util.Constant
+import com.easymanga.util.MangaUtil
 import kotlinx.android.synthetic.main.fragment_download.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.toast
@@ -71,8 +72,20 @@ class DownloadFragment : BaseFragment() {
             }
             episodes.clear()
             episodes.addAll(it)
+            updateDownloadedStatus()
             rv_chapter.adapter?.notifyDataSetChanged()
         })
+    }
+
+    private fun updateDownloadedStatus() {
+        val downloadedEpisodes = MangaUtil.getDownloadedEpisodeList(
+            requireContext(),
+            MangaUtil.CHIE_CO_BE_HAT_TIEU_DOWNLOADED_FOLDER
+        )
+        episodes.forEach {
+            val number = it.number
+            it.downloaded = downloadedEpisodes.any { it.number == number }
+        }
     }
 
     override fun onResume() {

@@ -11,7 +11,7 @@
             type="com.easymanga.data.Episode" />
     </data>
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_download_item"
         android:paddingLeft="@dimen/paddingleftright_download_item"
@@ -23,8 +23,14 @@
             android:id="@+id/tv_chapter_number"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:background="@{itemData.selected}"
             android:gravity="center"
-            android:text="@{String.valueOf(itemData.number)}" />
-    </FrameLayout>
+            android:text="@{String.valueOf(itemData.number)}"
+            app:background="@{itemData.selected}" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/download_checked"
+            android:visibility="@{safeUnbox(itemData.downloaded) ? View.VISIBLE : View.GONE}" />
+    </RelativeLayout>
 </layout>

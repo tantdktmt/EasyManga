@@ -36,7 +36,8 @@ data class Episode(
     val number: Int,
     val url: String = "",
     val coverUrl: String = "",
-    var selected: Boolean
+    var selected: Boolean = false,
+    var downloaded: Boolean = false
 )
 
 data class Page(val imageUrl: String)
