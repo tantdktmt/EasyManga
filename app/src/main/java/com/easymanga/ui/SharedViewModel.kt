@@ -90,17 +90,19 @@ class SharedViewModel @Inject constructor(
         )
     }
 
-    fun toggleSelectedStatusForAllEpisodes() {
+    fun toggleSelectedStatusExcludingDownloadedEpisodes() {
         if (selectedAllEpisode.value != null) {
             selectedAllEpisode.value = !selectedAllEpisode.value!!
-            episodeList.value?.forEach {
+            episodeList.value?.filter {
+                !it.downloaded
+            }?.forEach {
                 it.selected = selectedAllEpisode.value!!
             }
             episodeList.value = episodeList.value
         }
     }
 
-    fun resetSelectedStatusForAllEpisodes() {
+    fun clearSelectedStatusAllEpisodes() {
         selectedAllEpisode.value = false
         episodeList.value?.forEach {
             it.selected = selectedAllEpisode.value!!

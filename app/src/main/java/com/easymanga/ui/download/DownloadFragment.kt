@@ -98,6 +98,6 @@ class DownloadFragment : BaseFragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        viewModel.resetSelectedStatusForAllEpisodes()
+        viewModel.clearSelectedStatusAllEpisodes()
     }
 }

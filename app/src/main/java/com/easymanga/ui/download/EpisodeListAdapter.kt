@@ -20,8 +20,10 @@ class EpisodeListAdapter(private val episodes: List<Episode>, private val viewMo
             dataBinding.setVariable(BR.itemData, episodes[position])
             dataBinding.executePendingBindings()
             itemView.onClick {
-                episodes[position].selected = !episodes[position].selected
-                viewModel.refreshEpisodeList()
+                if (!episodes[position].downloaded) {
+                    episodes[position].selected = !episodes[position].selected
+                    viewModel.refreshEpisodeList()
+                }
             }
         }
     }
