@@ -24,5 +24,15 @@ class MangaUtil {
                 Episode(number = it.name.toInt())
             }
         }
+
+        fun getDownloadedEpisodePages(
+            context: Context,
+            mangaFolder: String,
+            episodeFolder: Int
+        ): List<File> {
+            val path =
+                "${CommonUtil.getRootDirPath(context)}${File.separator}$mangaFolder${File.separator}$episodeFolder"
+            return FileUtil.getSubFiles(path)
+        }
     }
 }

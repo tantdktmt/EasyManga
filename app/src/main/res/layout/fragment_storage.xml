@@ -21,14 +21,6 @@
         android:padding="@dimen/padding_storage_content"
         tools:context=".ui.storage.StorageFragment">
 
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="Storage screen"
-            android:textAlignment="center" />
-
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"

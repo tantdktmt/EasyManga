@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="manga"
+            type="com.easymanga.data.DownloadedManga" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_all_item_small"
+        android:layout_marginBottom="@dimen/margin_all_item_small">
+
+        <ImageView
+            android:id="@+id/iv_manga_icon"
+            android:layout_width="@dimen/width_downloaded_episode_item"
+            android:layout_height="@dimen/height_downloaded_item"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/margin_left_downloaded_manga_item_icon"
+            app:src="@{manga.iconResId}" />
+
+        <TextView
+            android:id="@+id/tv_manga_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/margin_left_downloaded_item_title"
+            android:text="@{manga.title}" />
+
+        <ImageView
+            android:id="@+id/iv_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginRight="@dimen/margin_right_downloaded_manga_item_arrow"
+            android:src="@drawable/ic_arrow_down" />
+    </FrameLayout>
+</layout>

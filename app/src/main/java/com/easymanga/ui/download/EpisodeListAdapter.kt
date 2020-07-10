@@ -6,7 +6,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.easymanga.BR
 import com.easymanga.data.Episode
-import com.easymanga.databinding.EpisodeItemForDownloadingLayoutBinding
+import com.easymanga.databinding.ItemEpisodeDownloadBinding
 import com.easymanga.ui.SharedViewModel
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
@@ -30,7 +30,7 @@ class EpisodeListAdapter(private val episodes: List<Episode>, private val viewMo
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val dataBinding =
-            EpisodeItemForDownloadingLayoutBinding.inflate(
+            ItemEpisodeDownloadBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

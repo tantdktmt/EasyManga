@@ -6,7 +6,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.easymanga.BR
 import com.easymanga.data.Page
-import com.easymanga.databinding.PageItemLayoutBinding
+import com.easymanga.databinding.ItemEpisodeDetailBinding
 
 class EpisodeDetailAdapter(private val pages: List<Page>) :
     RecyclerView.Adapter<EpisodeDetailAdapter.ViewHolder>() {
@@ -22,7 +22,7 @@ class EpisodeDetailAdapter(private val pages: List<Page>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val dataBinding =
-            PageItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemEpisodeDetailBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(dataBinding)
     }
 

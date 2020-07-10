@@ -7,7 +7,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.easymanga.BR
 import com.easymanga.data.Episode
-import com.easymanga.databinding.EpisodeItemLayoutBinding
+import com.easymanga.databinding.ItemEpisodeListBinding
 import com.easymanga.ui.mangadetail.MangaDetailFragmentDirections
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
@@ -32,7 +32,7 @@ class EpisodeListAdapter(private val episodes: List<Episode>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val dataBinding =
-            EpisodeItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemEpisodeListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(dataBinding)
     }
 

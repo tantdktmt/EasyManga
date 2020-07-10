@@ -12,6 +12,11 @@ fun bindImageViewUrl(view: ImageView, url: String) {
     Glide.with(view).load(url).into(view)
 }
 
+@BindingAdapter("app:src")
+fun bindImageViewDrawable(view: ImageView, iconResId: Int) {
+    Glide.with(view).load(iconResId).into(view)
+}
+
 @BindingAdapter("app:selectAllImageSrc")
 fun bindSelectAllImageViewSrc(view: ImageView, selected: Boolean) {
     if (selected) {

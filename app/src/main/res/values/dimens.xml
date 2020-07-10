@@ -4,6 +4,7 @@
     <!-- Common -->
     <dimen name="textsize_all_no_items_medium">18sp</dimen>
     <dimen name="margin_all_itemtitle_6dp">6dp</dimen>
+    <dimen name="margin_all_item_small">8dp</dimen>
     <dimen name="margin_all_small">3dp</dimen>
     <dimen name="size_all_divider">0.5dp</dimen>
 
@@ -17,4 +18,11 @@
     <dimen name="height_download_item">60dp</dimen>
     <dimen name="margintop_download">9dp</dimen>
     <dimen name="paddingleft_download_content">14dp</dimen>
+
+    <!-- Common -->
+    <dimen name="width_downloaded_episode_item">40dp</dimen>
+    <dimen name="height_downloaded_item">48dp</dimen>
+    <dimen name="margin_left_downloaded_item_title">72dp</dimen>
+    <dimen name="margin_left_downloaded_manga_item_icon">16dp</dimen>
+    <dimen name="margin_right_downloaded_manga_item_arrow">16dp</dimen>
 </resources>

@@ -16,5 +16,13 @@ class FileUtil {
                 })
             }
         }
+
+        fun getSubFiles(path: String): List<File> {
+            return if (!File(path).exists()) {
+                emptyList()
+            } else {
+                File(path).listFiles().asList()
+            }
+        }
     }
 }

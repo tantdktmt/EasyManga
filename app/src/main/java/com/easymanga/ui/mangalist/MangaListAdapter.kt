@@ -6,9 +6,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.easymanga.BR
-import com.easymanga.R
 import com.easymanga.data.Manga
-import com.easymanga.databinding.MangaItemLayoutBinding
+import com.easymanga.databinding.ItemMangaListBinding
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class MangaListAdapter(private val mangas: List<Manga>) :
@@ -28,7 +27,8 @@ class MangaListAdapter(private val mangas: List<Manga>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val dataBinding = MangaItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val dataBinding =
+            ItemMangaListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(dataBinding)
     }
 

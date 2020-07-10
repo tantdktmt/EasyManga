@@ -2,6 +2,7 @@ package com.easymanga.data
 
 import android.os.Parcelable
 import com.google.gson.annotations.Expose
+import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup
 import kotlinx.android.parcel.Parcelize
 
 data class Channel(
@@ -31,6 +32,30 @@ data class ChannelData(
 @Parcelize
 data class Manga(val name: String, val imageUrl: String = "", val summary: String = "") : Parcelable
 
+class DownloadedManga(name: String, val iconResId: Int, episodes: List<Episode>) :
+    ExpandableGroup<Episode>(name, episodes) {
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as DownloadedManga
+
+        if (iconResId != other.iconResId) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return iconResId
+    }
+
+    override fun toString(): String {
+        return "DownloadedManga(iconResId=$iconResId, name=$title, episodes=$items)"
+    }
+}
+
+@Parcelize
 data class Episode(
     val name: String = "",
     val number: Int,
@@ -38,6 +63,6 @@ data class Episode(
     val coverUrl: String = "",
     var selected: Boolean = false,
     var downloaded: Boolean = false
-)
+) : Parcelable
 
 data class Page(val imageUrl: String)
