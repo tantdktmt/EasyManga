@@ -4,6 +4,7 @@ import android.content.Context
 import com.easymanga.data.Episode
 import com.easymanga.data.Manga
 import java.io.File
+import java.util.*
 
 class MangaUtil {
 
@@ -28,11 +29,17 @@ class MangaUtil {
         fun getDownloadedEpisodePages(
             context: Context,
             mangaFolder: String,
-            episodeFolder: Int
+            episodeFolder: String
         ): List<File> {
             val path =
                 "${CommonUtil.getRootDirPath(context)}${File.separator}$mangaFolder${File.separator}$episodeFolder"
-            return FileUtil.getSubFiles(path)
+            val files = FileUtil.getSubFiles(path)
+            Collections.sort(
+                files
+            ) { file1, file2 ->
+                file1.name.substringBefore(".").toInt() - file2.name.substringBefore(".").toInt()
+            }
+            return files
         }
     }
 }

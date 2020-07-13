@@ -59,7 +59,7 @@ class DownloadManager @Inject constructor(
         val downloadFolder =
             "$DIR_PATH${File.separator}$mangaDownloadFolder${File.separator}$episodeNumber${File.separator}"
         for (i in pages.indices) {
-            downloadPage(downloadFolder, pages[i].imageUrl, "$i.jpg")
+            pages[i].imageUrl?.let { downloadPage(downloadFolder, it, "$i.jpg") }
         }
     }
 

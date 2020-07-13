@@ -4,6 +4,7 @@ import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup
 import kotlinx.android.parcel.Parcelize
+import java.io.File
 
 data class Channel(
 
@@ -65,4 +66,4 @@ data class Episode(
     var downloaded: Boolean = false
 ) : Parcelable
 
-data class Page(val imageUrl: String)
+data class Page(val imageUrl: String? = null, val file: File? = null)

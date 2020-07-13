@@ -73,10 +73,15 @@ class EpisodeDetailFragment : BaseFragment() {
     override fun onResume() {
         super.onResume()
         val episodeUrl = args.episodeUrl
+        val episodeFolder = args.episodeFolder
         if (episodeUrl != null
             && CommonUtil.isListEmpty(viewDataBinding.viewmodel?.pageList?.value)
         ) {
             viewDataBinding.viewmodel?.fetchPageList(episodeUrl)
+        } else if (episodeFolder != null
+            && CommonUtil.isListEmpty(viewDataBinding.viewmodel?.pageList?.value)
+        ) {
+            viewDataBinding.viewmodel?.getDownloadedPageList(episodeFolder)
         }
     }
 

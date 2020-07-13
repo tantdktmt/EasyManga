@@ -5,6 +5,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.easymanga.R
+import com.easymanga.data.Page
 import org.jetbrains.anko.backgroundResource
 
 @BindingAdapter("app:src")
@@ -15,6 +16,15 @@ fun bindImageViewUrl(view: ImageView, url: String) {
 @BindingAdapter("app:src")
 fun bindImageViewDrawable(view: ImageView, iconResId: Int) {
     Glide.with(view).load(iconResId).into(view)
+}
+
+@BindingAdapter("app:pageSrc")
+fun bindImageViewUrlOrFile(view: ImageView, page: Page) {
+    if (page.imageUrl != null) {
+        Glide.with(view).load(page.imageUrl).into(view)
+    } else if (page.file != null) {
+        Glide.with(view).load(page.file).into(view)
+    }
 }
 
 @BindingAdapter("app:selectAllImageSrc")

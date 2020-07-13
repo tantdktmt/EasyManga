@@ -41,7 +41,16 @@
         android:id="@+id/storage_dest"
         android:name="com.easymanga.ui.storage.StorageFragment"
         android:label="@string/storage_title"
-        tools:layout="@layout/fragment_storage" />
+        tools:layout="@layout/fragment_storage">
+
+        <action
+            android:id="@+id/go_to_episode_detail_action"
+            app:destination="@id/episode_detail_dest"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/manga_detail_dest"
@@ -80,6 +89,12 @@
 
         <argument
             android:name="episodeUrl"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+
+        <argument
+            android:name="episodeFolder"
             android:defaultValue="@null"
             app:argType="string"
             app:nullable="true" />
