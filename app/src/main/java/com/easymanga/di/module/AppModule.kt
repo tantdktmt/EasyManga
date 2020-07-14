@@ -1,5 +1,6 @@
 package com.easymanga.di.module
 
+import android.app.Application
 import android.content.Context
 import com.easymanga.EasyMangaApplication
 import com.easymanga.di.ApplicationContext
@@ -11,12 +12,18 @@ import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Singleton
 
 @Module
-class AppModule(private var context: EasyMangaApplication) {
+class AppModule(private var application: EasyMangaApplication) {
 
     @Provides
     @ApplicationContext
     fun provideApplicationContext(): Context {
-        return context
+        return application
+    }
+
+    @Provides
+    @Singleton
+    fun provideApplication(): Application {
+        return application
     }
 
     @Provides

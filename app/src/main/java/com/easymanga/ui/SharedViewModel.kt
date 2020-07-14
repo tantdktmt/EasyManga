@@ -1,7 +1,6 @@
 package com.easymanga.ui
 
-import android.content.Context
-import android.util.Log
+import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.easymanga.data.Channel
@@ -10,21 +9,25 @@ import com.easymanga.data.Manga
 import com.easymanga.data.Page
 import com.easymanga.data.network.DownloadManager
 import com.easymanga.data.network.NetworkDataManager
-import com.easymanga.di.ApplicationContext
 import com.easymanga.ui.base.BaseViewModel
-import com.easymanga.util.Constant
 import com.easymanga.util.MangaUtil
 import com.easymanga.util.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 class SharedViewModel @Inject constructor(
-    @ApplicationContext context: Context,
+    application: Application,
     networkDataManager: NetworkDataManager,
     downloadManager: DownloadManager,
     compositeDisposable: CompositeDisposable,
     schedulerProvider: SchedulerProvider
-) : BaseViewModel(context, networkDataManager, downloadManager, compositeDisposable, schedulerProvider) {
+) : BaseViewModel(
+    application,
+    networkDataManager,
+    downloadManager,
+    compositeDisposable,
+    schedulerProvider
+) {
 
     val channelList = MutableLiveData<List<Channel>>()
     val episodeList = MutableLiveData<List<Episode>>()
@@ -98,8 +101,10 @@ class SharedViewModel @Inject constructor(
 
     fun getDownloadedPageList(episodeFolder: String) {
         loadingState.value = LoadingState.LOADING
-        val pages = MangaUtil.getDownloadedEpisodePages(context
-            , MangaUtil.CHIE_CO_BE_HAT_TIEU_DOWNLOADED_FOLDER, episodeFolder).map {
+        val pages = MangaUtil.getDownloadedEpisodePages(
+            getApplication()
+            , MangaUtil.CHIE_CO_BE_HAT_TIEU_DOWNLOADED_FOLDER, episodeFolder
+        ).map {
             Page(file = it)
         }
         pageList.value = ArrayList(pages)
