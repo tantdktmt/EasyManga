@@ -8,6 +8,7 @@ import com.downloader.PRDownloader
 import com.easymanga.BuildConfig
 import com.easymanga.data.Episode
 import com.easymanga.data.Page
+import com.easymanga.di.ApplicationContext
 import com.easymanga.util.CommonUtil
 import com.easymanga.util.Constant
 import com.easymanga.util.MangaUtil
@@ -15,11 +16,13 @@ import com.easymanga.util.rx.SchedulerProvider
 import java.io.File
 import java.util.*
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class DownloadManager @Inject constructor(
     private val networkDataManager: NetworkDataManager,
     private val schedulerProvider: SchedulerProvider,
-    private val applicationContext: Context
+    @ApplicationContext private val context: Context
 ) {
 
     companion object {
@@ -27,7 +30,7 @@ class DownloadManager @Inject constructor(
         val DEBUG_SUB_TAG = "[${DownloadManager::class.java.simpleName}]"
     }
 
-    private val DIR_PATH = CommonUtil.getRootDirPath(applicationContext)
+    private val DIR_PATH = CommonUtil.getRootDirPath(context)
     private var downloadId: Int = 0
 
     fun downloadEpisode(episode: Episode) {

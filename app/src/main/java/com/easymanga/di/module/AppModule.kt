@@ -2,7 +2,6 @@ package com.easymanga.di.module
 
 import android.content.Context
 import com.easymanga.EasyMangaApplication
-import com.easymanga.debug.Person
 import com.easymanga.di.ApplicationContext
 import com.easymanga.util.rx.AppSchedulerProvider
 import com.easymanga.util.rx.SchedulerProvider
@@ -18,12 +17,6 @@ class AppModule(private var context: EasyMangaApplication) {
     @ApplicationContext
     fun provideApplicationContext(): Context {
         return context
-    }
-
-    @Provides
-    @Singleton
-    fun providePerson(): Person {
-        return Person("Tran Duc Tan", 30)
     }
 
     @Provides

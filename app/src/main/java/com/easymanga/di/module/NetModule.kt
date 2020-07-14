@@ -1,20 +1,17 @@
 package com.easymanga.di.module
 
-import android.content.Context
 import com.easymanga.data.network.AppNetworkDataManager
-import com.easymanga.data.network.DownloadManager
 import com.easymanga.data.network.NetworkDataManager
-import com.easymanga.di.ApplicationContext
-import com.easymanga.util.rx.SchedulerProvider
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-@Module
+@Module(includes = [NetModule.BindsModule::class])
 class NetModule(val baseUrl: String) {
 
     @Provides
@@ -40,21 +37,10 @@ class NetModule(val baseUrl: String) {
         return retrofit.create(NetworkDataManager.RetrofitApi::class.java)
     }
 
-    @Provides
-    @Singleton
-    fun provideNetworkDataManager(
-        retrofitNetworkData: NetworkDataManager.RetrofitApi
-    ): NetworkDataManager {
-        return AppNetworkDataManager(retrofitNetworkData)
-    }
+    @Module
+    interface BindsModule {
 
-    @Provides
-    @Singleton
-    fun provideDownloadManager(
-        networkDataManager: NetworkDataManager,
-        schedulerProvider: SchedulerProvider,
-        @ApplicationContext context: Context
-    ): DownloadManager {
-        return DownloadManager(networkDataManager, schedulerProvider, context)
+        @Binds
+        fun provideNetworkDataManager(networkDataManager: AppNetworkDataManager): NetworkDataManager
     }
 }
