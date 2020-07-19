@@ -5,6 +5,7 @@
     <data>
 
         <import type="android.view.View" />
+
         <import type="com.easymanga.ui.base.BaseViewModel.LoadingState" />
 
         <variable
@@ -20,8 +21,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_manga"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
             android:scrollbars="none"
             android:visibility="@{viewmodel.loadingState == LoadingState.LOADING ? View.GONE : View.VISIBLE}" />
 

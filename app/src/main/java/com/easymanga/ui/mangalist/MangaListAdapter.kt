@@ -20,8 +20,10 @@ class MangaListAdapter(private val mangas: List<Manga>) :
             dataBinding.setVariable(BR.itemData, manga)
             dataBinding.executePendingBindings()
             itemView.onClick {
-                val action = MangaListFragmentDirections.goToMangaDetailAction(manga)
-                itemView.findNavController().navigate(action)
+                if ("Chie cô bé hạt tiêu".equals(manga.name)) {
+                    val action = MangaListFragmentDirections.goToMangaDetailAction(manga)
+                    itemView.findNavController().navigate(action)
+                }
             }
         }
     }

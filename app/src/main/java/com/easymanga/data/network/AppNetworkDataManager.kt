@@ -68,10 +68,18 @@ class AppNetworkDataManager @Inject constructor(
             try {
                 val doc = Jsoup.connect(EndPoint.MANGA_LIST_URL).get()
                 val summary = doc.select(".messageText:first-of-type").first().ownText()
-                val result = doc.select(".LbImage:first-of-type").map {
+                val result = ArrayList(doc.select(".LbImage:first-of-type").map {
                     Manga("Chie cô bé hạt tiêu", it.attr("src"), summary)
-                }
-                it.onSuccess(ArrayList(result))
+                })
+                result.add(Manga("7 viên ngọc rồng"
+                    , "https://znews-photo.zadn.vn/w660/Uploaded/oplukaa/2020_06_14/100384771_10157509824368869_9057397775934685184_o.jpg"))
+                result.add(Manga("Dấu ấn rồng thiêng"
+                    , "https://upload.wikimedia.org/wikipedia/vi/thumb/e/e2/Dragon_Ques_vol_26.jpg/230px-Dragon_Ques_vol_26.jpg"))
+                result.add(Manga("Ninja loạn thị"
+                    , "https://metruyentranh.com/images/covers/ninja-loan-thi.jpg"))
+                result.add(Manga("Dũng sĩ Hesman"
+                    , "https://www.dtv-ebook.com/images/files_2/2020/dung-si-hesman.jpg"))
+                it.onSuccess(result)
             } catch (e: Exception) {
                 it.onError(e)
             }

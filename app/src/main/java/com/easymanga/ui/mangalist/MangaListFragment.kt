@@ -63,12 +63,6 @@ class MangaListFragment : BaseFragment() {
             }
             mangas.clear()
             mangas.addAll(it)
-            // TESTING
-            val manga = it[0]
-            for(i in 0..9) {
-                mangas.add(manga)
-            }
-            // TESTING
             rv_manga.adapter?.notifyDataSetChanged()
         })
     }
