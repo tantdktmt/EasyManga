@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/iv_photo"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="@dimen/width_manga_list_item_photo"
+            android:layout_height="@dimen/height_manga_list_item_photo"
             android:scaleType="fitXY"
             app:src="@{itemData.imageUrl}" />
 
