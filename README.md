@@ -2,7 +2,7 @@
 Read favorite comics online, unlimited downloads to enjoy offline.
 <br/>
 
-<h2>Description: </h2>This is an application run on Android phones and tablets, allow reading manga online. Beside, users can download to read offline when there is no internet.
+<h2>Description </h2>This is an application run on Android phones and tablets, allow reading manga online. Beside, users can download to read offline when there is no internet.
 
 <h2>Project architecture</h2> This project is built on Kotlin MVVM pattern with Android Architecture Component (ViewModel, LiveData), Data Binding, Android Navigation Component,
 RxJava/RxAndroid, Dagger, Retrofit, Glide, Jsoup
