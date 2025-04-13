@@ -1,11 +1,10 @@
 # EasyManga
-Read favorite comics online, unlimited downloads to enjoy offline.
+Enjoy your favorite comics online with unlimited downloads for seamless offline reading.
 <br/>
 
-<h2>Description </h2>This is an application run on Android phones and tablets, allow reading manga online. Beside, users can download to read offline when there is no internet.
+<h2>Description </h2> An Android app for phones and tablets that lets you read manga online and download chapters to enjoy offline anytime.
 
-<h2>Project architecture</h2> This project is built on Kotlin MVVM pattern with Android Architecture Component (ViewModel, LiveData), Data Binding, Android Navigation Component,
-RxJava/RxAndroid, Dagger, Retrofit, Glide, Jsoup
+<h2>Project architecture</h2> The project is structured using the Kotlin MVVM pattern, leveraging Android Architecture Components such as ViewModel, LiveData, and Data Binding. It integrates Android Navigation Component for seamless screen transitions, with RxJava/RxAndroid for reactive programming, Dagger for dependency injection, Retrofit for network operations, Glide for image loading, and Jsoup for parsing HTML.
 
 ### License
 ```
